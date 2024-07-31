@@ -13,14 +13,14 @@ if (!projectId || !dataset) {
   );
 }
 
-import { defineConfig } from 'sanity';
-import { structureTool } from 'sanity/structure';
-import { visionTool } from '@sanity/vision';
-import { schemaTypes } from './schema';
+import { defineConfig } from "sanity";
+import { structureTool } from "sanity/structure";
+import { visionTool } from "@sanity/vision";
+import { schemaTypes } from "./schema";
 
 export default defineConfig({
-  name: 'project-name',
-  title: 'Project Name',
+  name: "project-name",
+  title: "Project Name",
   projectId,
   dataset,
   plugins: [structureTool(), visionTool()],

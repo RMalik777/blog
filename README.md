@@ -62,12 +62,12 @@ You can also deploy the Sanity Studio on its own URL by running `npx sanity depl
 
 ```ts
 // sanity.cli.ts
-import { defineCliConfig } from 'sanity/cli';
+import { defineCliConfig } from "sanity/cli";
 
 export default defineCliConfig({
   api: {
-    projectId: '<your-project-id>',
-    dataset: '<your-dataset-name>',
+    projectId: "<your-project-id>",
+    dataset: "<your-dataset-name>",
   },
 });
 ```
