@@ -19,20 +19,22 @@ import react from "@astrojs/react";
 // https://docs.astro.build/en/guides/server-side-rendering/#adding-an-adapter
 import cloudflare from "@astrojs/cloudflare";
 
+import tailwind from "@astrojs/tailwind";
+
 // https://astro.build/config
 export default defineConfig({
   // Hybrid+adapter is required to support embedded Sanity Studio
   output: "hybrid",
   adapter: cloudflare(),
-  integrations: [
-    sanity({
-      projectId,
-      dataset,
-      studioBasePath: "/admin",
-      useCdn: false,
-      // `false` if you want to ensure fresh data
-      apiVersion: "2024-07-29" // Set to date of setup to use the latest API version
-    }),
-    react() // Required for Sanity Studio
-  ]
+  integrations: [sanity({
+    projectId,
+    dataset,
+    studioBasePath: "/admin",
+    useCdn: false,
+    // `false` if you want to ensure fresh data
+    apiVersion: "2024-07-29" // Set to date of setup to use the latest API version
+  }), react() // Required for Sanity Studio
+  , tailwind({
+    applyBaseStyles: false,
+  })]
 });
