@@ -12,7 +12,7 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@astrojs/check": "^0.8.3",
+    "@astrojs/check": "^0.9.1",
     "@astrojs/cloudflare": "^11.0.1",
     "@astrojs/react": "^3.6.1",
     "@astrojs/tailwind": "^5.1.0",
@@ -30,7 +30,7 @@
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
     "groq": "^3.48.1",
-    "lucide-react": "^0.417.0",
+    "lucide-react": "^0.418.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "sanity": "^3.52.4",
@@ -47,7 +47,7 @@
     "@types/eslint-config-prettier": "^6.11.3",
     "@types/react": "^18.3.3",
     "@types/react-dom": "^18.3.0",
-    "@typescript-eslint/parser": "^7.18.0",
+    "@typescript-eslint/parser": "^8.0.0",
     "eslint": "^8.57.0",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-astro": "^1.2.3",
@@ -55,7 +55,7 @@
     "prettier": "^3.3.3",
     "prettier-plugin-astro": "^0.14.1",
     "prettier-plugin-tailwindcss": "^0.6.5",
-    "rimraf": "^5.0.9",
+    "rimraf": "^5.0.10",
     "typescript": "^5.5.4",
     "vite": "^5.3.5"
   },
