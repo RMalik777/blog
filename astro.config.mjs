@@ -25,9 +25,7 @@ import tailwind from "@astrojs/tailwind";
 export default defineConfig({
   // Hybrid+adapter is required to support embedded Sanity Studio
   output: "hybrid",
-  adapter: cloudflare({
-    imageService: "cloudflare",
-  }),
+  adapter: cloudflare(),
   integrations: [
     sanity({
       projectId,
