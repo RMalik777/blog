@@ -2,6 +2,7 @@
 import { formatDate } from "../utils";
 import { urlFor } from "../utils/image";
 import type { Post } from "../utils/sanity";
+import { Image } from "astro:assets";
 
 interface Props {
   post: Post;
@@ -13,9 +14,11 @@ const { post } = Astro.props;
 <div class="card">
   {
     post.mainImage ? (
-      <img
+      <Image
         class="card__cover"
         src={urlFor(post.mainImage).width(500).height(300).url()}
+        width={500}
+        height={300}
         alt="Cover image"
       />
     ) : (
@@ -24,10 +27,7 @@ const { post } = Astro.props;
   }
   <div class="card__container">
     <h3 class="card__title">
-      <a
-        class="card__link"
-        href={`/post/${post.slug.current}`}
-      >
+      <a class="card__link" href={`/post/${post.slug.current}`}>
         {post.title}
       </a>
     </h3>

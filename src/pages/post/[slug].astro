@@ -5,6 +5,7 @@ import Layout from "../../layouts/Layout.astro";
 import { formatDate } from "../../utils";
 import { urlFor } from "../../utils/image";
 import { getPost, getPosts } from "../../utils/sanity";
+import { Image } from "astro:assets";
 
 export async function getStaticPaths() {
   const posts = await getPosts();
@@ -19,15 +20,11 @@ const { slug } = Astro.params as Params;
 const post = await getPost(slug);
 ---
 
-<Layout title={post.title!}>
+<Layout title={post.title! + " | Rafli Malik"} desc={post.title!}>
   <section class="post">
     {
       post.mainImage ? (
-        <img
-          class="post__cover"
-          src={urlFor(post.mainImage).url()}
-          alt="Cover image"
-        />
+        <Image class="post__cover" src={urlFor(post.mainImage).url()} width={1000} height={720} alt="Cover image" />
       ) : (
         <div class="post__cover--none" />
       )
@@ -46,6 +43,16 @@ const post = await getPost(slug);
 </Layout>
 
 <style>
+  a {
+    background-size: 100% 200%;
+    transition: all 200ms cubic-bezier(0.2, 0, 0, 1) 150ms !important;
+    background-image: linear-gradient(to bottom, transparent 50%, #c084fc 0);
+    background-position: top;
+  }
+  a:hover {
+    background-position: bottom;
+  }
+
   .post {
     width: 100%;
     margin: var(--space-1) 0 var(--space-4);
