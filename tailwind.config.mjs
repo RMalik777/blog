@@ -35,7 +35,7 @@ module.exports = {
         "accordion-up": "accordion-up 0.2s ease-out",
       },
       fontFamily: {
-        sans: ["Lexend", ...defaultTheme.fontFamily.sans],
+        sans: ["Lexend Variable", ...defaultTheme.fontFamily.sans],
         serif: ["Lora", ...defaultTheme.fontFamily.serif],
         mono: ["Geist Mono", ...defaultTheme.fontFamily.mono],
       },
