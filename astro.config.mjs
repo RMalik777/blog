@@ -18,11 +18,13 @@ import react from "@astrojs/react";
 // Change this depending on your hosting provider (Vercel, Netlify etc)
 // https://docs.astro.build/en/guides/server-side-rendering/#adding-an-adapter
 import cloudflare from "@astrojs/cloudflare";
-
 import tailwind from "@astrojs/tailwind";
+
+import sitemap from "@astrojs/sitemap";
 
 // https://astro.build/config
 export default defineConfig({
+  site: "https://blog.raflimalik.com",
   // Hybrid+adapter is required to support embedded Sanity Studio
   output: "hybrid",
   adapter: cloudflare(),
@@ -35,9 +37,11 @@ export default defineConfig({
       // `false` if you want to ensure fresh data
       apiVersion: "2024-07-29", // Set to date of setup to use the latest API version
     }),
-    react(), // Required for Sanity Studio
+    react(),
+    // Required for Sanity Studio
     tailwind({
       applyBaseStyles: false,
     }),
+    sitemap(),
   ],
 });
