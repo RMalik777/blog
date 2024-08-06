@@ -20,6 +20,10 @@ module.exports = {
       },
     },
     extend: {
+      screens: {
+        "2xs": "360px",
+        xs: "480px",
+      },
       keyframes: {
         "accordion-down": {
           from: { height: "0" },
