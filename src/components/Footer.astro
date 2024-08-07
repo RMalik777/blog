@@ -1,0 +1,130 @@
+---
+import { Image } from "astro:assets";
+import AstroLogo from "@/assets/astro-logo-light-gradient.svg";
+import SanityLogo from "@/assets/sanity-logotype--white-on-black.svg";
+import { SquareArrowOutUpRight } from "lucide-react";
+
+const backLink = [
+  {
+    title: "Explore",
+    children: [
+      {
+        title: "Home",
+        href: "/",
+      },
+      {
+        title: "About",
+        href: "/about",
+      },
+      {
+        title: "License",
+        href: "/license",
+      },
+    ],
+  },
+  {
+    title: "Social",
+    children: [
+      {
+        title: "GitHub",
+        href: "https://github.com/RMalik777",
+      },
+      {
+        title: "LinkedIn",
+        href: "https://www.linkedin.com/in/raflimalik/",
+      },
+      {
+        title: "Instagram",
+        href: "https://www.instagram.com/raflimalik__/",
+      },
+      {
+        title: "Unsplash",
+        href: "https://unsplash.com/@raflimalik",
+      },
+    ],
+  },
+  {
+    title: "Contact",
+    children: [
+      {
+        title: "Email",
+        href: "mailto:Rafli.Malik@gmail.com",
+      },
+      {
+        title: "Discord",
+        href: "https://discord.com/users/432877551640117249",
+      },
+    ],
+  },
+];
+---
+
+<footer class="flex w-full flex-col items-center justify-center bg-neutral-950 text-neutral-50">
+  <div
+    class="flex w-full flex-col items-start justify-start gap-2 px-4 py-6 xs:px-6 xs:py-8 sm:flex-row sm:gap-8 sm:px-8 sm:py-8 md:py-10 lg:gap-16 lg:py-12 xl:gap-32">
+    {
+      backLink.map((link) => (
+        <div class="flex flex-col items-start gap-1">
+          <p class="text-xl font-medium">{link.title}</p>
+          <ul>
+            {link.children.map((child) => (
+              <li>
+                <a
+                  href={child.href}
+                  class="text-purple-400 hover:text-purple-500 hover:underline"
+                  target="_blank"
+                  rel="noopener noreferrer">
+                  {child.title}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))
+    }
+  </div>
+  <div class="flex w-full flex-col items-start gap-1 px-4 xs:px-6 sm:px-8">
+    <hr class="w-full border-neutral-500" />
+    <p class="w-full text-left text-sm font-light">
+      This website is licensed under
+      <a
+        class="text-purple-400 hover:text-purple-500 hover:underline"
+        href="https://creativecommons.org/licenses/by/4.0/"
+        target="_blank">
+        Creative Commons Attribution 4.0 International
+        <SquareArrowOutUpRight className="inline-block align-middle" size={14} />
+      </a>
+      license
+    </p>
+    <p class="w-full text-left text-sm font-light">
+      The source code for this website is available on
+      <a
+        class="text-purple-400 hover:text-purple-500 hover:underline"
+        href="https://github.com/RMalik777/blog"
+        target="_blank"
+        rel="noopener noreferrer">
+        GitHub
+        <SquareArrowOutUpRight className="inline-block align-middle" size={14} />
+      </a>
+      under the
+      <a
+        class="text-purple-400 hover:text-purple-500 hover:underline"
+        href="https://github.com/RMalik777/blog/blob/2b228adbe0eee32508661cb570ffda8579842e8b/LICENSE"
+        target="_blank"
+        rel="noopener noreferrer">
+        MIT LICENSE
+        <SquareArrowOutUpRight className="inline-block align-middle" size={14} />
+      </a>
+    </p>
+  </div>
+  <div class="flex w-full flex-col items-center justify-center gap-1 bg-black p-2 py-4 text-white xs:flex-row">
+    <p>Built with</p>
+    <a href="https://astro.build" target="_blank" rel="noopener noreferrer">
+      <Image src={AstroLogo} alt="Astro Logo" class="h-12 w-auto min-w-min" />
+    </a>
+    <p class="hidden xs:block">+</p>
+    <a href="https://sanity.io" target="_blank" rel="noopener noreferrer">
+      <Image src={SanityLogo} alt="Astro Logo" class="h-10 w-auto min-w-min" />
+    </a>
+  </div>
+</footer>

@@ -1,13 +1,12 @@
 ---
 import { buttonVariants } from "@/components/ui/button";
-import "@/styles/globals.css";
 import Layout from "@/layouts/Layout.astro";
 ---
 
 <Layout title="Page Not Found" desc="404 error, page not found">
   <main class="-mt-14 flex min-h-dvh flex-col items-start justify-center gap-4">
     <h1 class="text-5xl font-light tracking-tight">
-      <span class="font-mono font-medium tracking-normal">404|</span>Page Not Found
+      <span class="font-mono font-semibold tracking-normal">404|</span>Page Not Found
     </h1>
     <a class={buttonVariants({ variant: "outline" })} href="/">Go Back Home</a>
   </main>
