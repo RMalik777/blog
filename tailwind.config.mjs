@@ -40,7 +40,7 @@ module.exports = {
       },
       fontFamily: {
         sans: ["Lexend Variable", ...defaultTheme.fontFamily.sans],
-        serif: ["Lora", ...defaultTheme.fontFamily.serif],
+        serif: ["Lora Variable", ...defaultTheme.fontFamily.serif],
         mono: ["Geist Mono", ...defaultTheme.fontFamily.mono],
       },
     },
