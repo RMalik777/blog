@@ -75,9 +75,9 @@ const backLink = [
       ))
     }
   </div>
-  <div class="flex w-full flex-col items-start gap-1 px-4 xs:px-6 sm:px-8">
+  <div class="flex w-full flex-col items-start gap-1 px-4 text-left text-xs font-light xs:px-6 sm:px-8">
     <hr class="w-full border-neutral-500" />
-    <p class="w-full text-left text-sm font-light">
+    <p class="w-full">
       This website is licensed under
       <a
         class="text-purple-400 hover:text-purple-500 hover:underline"
@@ -88,7 +88,7 @@ const backLink = [
       </a>
       license
     </p>
-    <p class="w-full text-left text-sm font-light">
+    <p class="w-full">
       The source code for this website is available on
       <a
         class="text-purple-400 hover:text-purple-500 hover:underline"
@@ -111,12 +111,14 @@ const backLink = [
   </div>
   <div class="flex w-full flex-col items-center justify-center gap-1 bg-black p-2 py-4 text-white xs:flex-row">
     <p>Built with</p>
-    <a href="https://astro.build" target="_blank" rel="noopener noreferrer">
-      <Image src={AstroLogo} alt="Astro Logo" class="h-12 w-auto min-w-min" />
-    </a>
-    <p class="hidden xs:block">+</p>
-    <a href="https://sanity.io" target="_blank" rel="noopener noreferrer">
-      <Image src={SanityLogo} alt="Astro Logo" class="h-10 w-auto min-w-min" />
-    </a>
+    <div class="flex w-full flex-row flex-wrap items-center justify-center xs:w-fit xs:flex-nowrap">
+      <a href="https://astro.build" target="_blank" rel="noopener noreferrer">
+        <Image src={AstroLogo} alt="Astro Logo" class="h-8 w-auto min-w-min xs:h-12" />
+      </a>
+      <p class="hidden xs:block">+</p>
+      <a href="https://sanity.io" target="_blank" rel="noopener noreferrer">
+        <Image src={SanityLogo} alt="Astro Logo" class="h-6 w-auto min-w-min xs:h-10" />
+      </a>
+    </div>
   </div>
 </footer>
