@@ -13,7 +13,7 @@ const { post } = Astro.props;
 
 <a class="flex flex-col gap-2 border p-2 md:flex-row md:gap-4" href={`/post/${post.slug.current}`}>
   {
-    post.thumbnail ? (
+    post?.thumbnail ? (
       <Image
         class="object-auto h-auto w-full object-cover md:h-auto md:w-2/5"
         src={urlFor(post.thumbnail).width(500).height(300).url()}
@@ -21,9 +21,7 @@ const { post } = Astro.props;
         height={300}
         alt="Cover image"
       />
-    ) : (
-      <div class="card__cover--none" />
-    )
+    ) : null
   }
   <div class="flex flex-col gap-2 md:gap-4">
     <h3 class="text-2xl font-semibold xs:text-3xl md:text-4xl">
