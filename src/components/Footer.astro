@@ -61,11 +61,11 @@ const backLink = [
     {
       backLink.map((link) => (
         <div class="flex flex-col items-start gap-1">
-          <p class="text-xl font-medium">{link.title}</p>
+          <p class="text-xl font-medium tracking-tight">{link.title}</p>
           <ul>
             {link.children.map((child) => (
               <li>
-                <a href={child.href} class="text-purple-400 hover:text-purple-500 hover:underline">
+                <a href={child.href} class="tracking-tight text-purple-400 hover:text-purple-500 hover:underline">
                   {child.title}
                 </a>
               </li>
@@ -75,9 +75,11 @@ const backLink = [
       ))
     }
   </div>
-  <div class="flex w-full flex-col items-start gap-1 px-4 text-left text-xs font-light xs:px-6 sm:px-8">
-    <a class="text-purple-400 hover:text-purple-500 hover:underline" href="http://raflimalik.com" target="_blank"
-      >Rafli Malik | 2024</a
+  <div class="flex w-full flex-col items-start gap-1 px-4 text-left text-sm tracking-tight xs:px-6 sm:px-8">
+    <a
+      class="tracking-tighter text-purple-400 hover:text-purple-500 hover:underline"
+      href="http://raflimalik.com"
+      target="_blank">Rafli Malik | 2024</a
     >
     <hr class="w-full border-neutral-500" />
     <p class="w-full">

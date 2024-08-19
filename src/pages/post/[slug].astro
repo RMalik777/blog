@@ -22,8 +22,8 @@ const post = await getPost(slug, "en");
 <Layout title={post.title! + " | Rafli Malik"} desc={post.title!}>
   <section class="my-12 flex flex-col items-center">
     <div class="mb-8 max-w-prose">
-      <h1 class="text-center text-4xl font-semibold">{post.title}</h1>
-      <h2 class="text-center text-xl font-normal">{post?.location}</h2>
+      <h1 class="text-center text-5xl font-bold tracking-tight">{post.title}</h1>
+      <h2 class="text-center text-xl font-medium tracking-tight">{post?.location}</h2>
     </div>
     {
       post.thumbnail ? (
@@ -40,8 +40,8 @@ const post = await getPost(slug, "en");
     }
     <div class="flex flex-col items-center">
       <div class="flex w-full max-w-prose flex-col items-start gap-8">
-        <p class="text-2xl">{post.excerpt}</p>
-        <div class="font-light leading-relaxed tracking-wide">
+        <p class="text-2xl font-medium tracking-tight">{post.excerpt}</p>
+        <div class="flex flex-col gap-4 font-normal leading-relaxed">
           <PortableText value={post.body} />
         </div>
         <p class="text-left text-lg">
