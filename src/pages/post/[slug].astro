@@ -22,7 +22,7 @@ const post = await getPost(slug, "en");
 <Layout title={post.title! + " | Rafli Malik"} desc={post.title!}>
   <section class="my-12 flex flex-col items-center">
     <div class="mb-8 max-w-prose">
-      <h1 class="text-center text-5xl font-bold tracking-tight">{post.title}</h1>
+      <h1 class="text-center text-5xl font-semibold tracking-tight">{post.title}</h1>
       <h2 class="text-center text-xl font-medium tracking-tight">{post?.location}</h2>
     </div>
     {
