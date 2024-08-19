@@ -42,6 +42,11 @@ export default defineConfig({
     tailwind({
       applyBaseStyles: false,
     }),
-    sitemap(),
+    sitemap({
+      filter: (page) => page !== "https://blog.raflimalik.com/admin",
+      changefreq: "monthly",
+      priority: 0.7,
+      lastmod: new Date(Date.now()),
+    }),
   ],
 });
