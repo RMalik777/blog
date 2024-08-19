@@ -16,6 +16,7 @@ if (!projectId || !dataset) {
 import { defineConfig } from "sanity";
 import { structureTool } from "sanity/structure";
 import { visionTool } from "@sanity/vision";
+import { documentInternationalization } from "@sanity/document-internationalization";
 import { schemaTypes } from "./schema";
 
 export default defineConfig({
@@ -23,7 +24,18 @@ export default defineConfig({
   title: "Project Name",
   projectId,
   dataset,
-  plugins: [structureTool(), visionTool()],
+  plugins: [
+    structureTool(),
+    visionTool(),
+    documentInternationalization({
+      supportedLanguages: [
+        { id: "en", title: "English" },
+        { id: "id", title: "Indonesian" },
+      ],
+      schemaTypes: ["post"],
+      apiVersion: "2024-08-16",
+    }),
+  ],
   schema: {
     types: schemaTypes,
   },

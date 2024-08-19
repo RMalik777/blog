@@ -4,7 +4,7 @@ import Welcome from "../components/Welcome.astro";
 import Layout from "../layouts/Layout.astro";
 import { getPosts } from "../utils/sanity";
 
-const posts = await getPosts();
+const posts = await getPosts("en");
 ---
 
 <Layout title="Blog | Rafli Malik" desc="Rafli Malik personal blog">
