@@ -38,6 +38,7 @@ export function DarkMode() {
 
   return (
     <Button
+      name="Dark mode toggle"
       variant="ghost"
       size="icon"
       onClick={() => {
