@@ -44,9 +44,18 @@ export default defineConfig({
     }),
     sitemap({
       filter: (page) => page !== "https://blog.raflimalik.com/admin",
-      changefreq: "monthly",
-      priority: 0.7,
-      lastmod: new Date(Date.now()),
+      serialize: (page) => {
+        if (page.url == "https://blog.raflimalik.com/") {
+          page.changefreq = "weekly";
+          page.priority = 1;
+          page.lastmod = new Date();
+        } else {
+          page.changefreq = "monthly";
+          page.priority = 0.8;
+          page.lastmod = new Date();
+        }
+        return page;
+      },
     }),
   ],
 });
