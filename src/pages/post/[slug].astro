@@ -7,6 +7,8 @@ import { urlFor } from "../../utils/image";
 import { getPost, getPosts } from "../../utils/sanity";
 import { Image } from "astro:assets";
 
+import { ImageGallery } from "@/components/ImageGallery";
+
 export async function getStaticPaths() {
   const posts = await getPosts("en");
   return posts.map((post) => ({
@@ -19,14 +21,14 @@ const { slug } = Astro.params as Params;
 const post = await getPost(slug, "en");
 ---
 
-<Layout title={post.title! + " | Rafli Malik"} desc={post.title!}>
+<Layout title={post?.title! + " | Rafli Malik"} desc={post?.title!}>
   <section class="my-12 flex flex-col items-center">
     <div class="mb-8 max-w-prose">
-      <h1 class="text-center text-5xl font-semibold tracking-tight">{post.title}</h1>
+      <h1 class="text-center text-5xl font-semibold tracking-tight">{post?.title}</h1>
       <h2 class="text-center text-xl font-medium tracking-tight">{post?.location}</h2>
     </div>
     {
-      post.thumbnail ? (
+      post?.thumbnail ? (
         <Image
           class="mb-6 w-full object-cover"
           src={urlFor(post.thumbnail).url()}
@@ -40,12 +42,13 @@ const post = await getPost(slug, "en");
     }
     <div class="flex flex-col items-center">
       <div class="flex w-full max-w-prose flex-col items-start gap-8">
-        <p class="text-2xl font-medium tracking-tight">{post.excerpt}</p>
+        <p class="text-2xl font-medium tracking-tight">{post?.excerpt}</p>
         <div class="flex flex-col gap-4 font-normal leading-relaxed">
-          <PortableText value={post.body} />
+          <PortableText value={post?.body} />
         </div>
-        <p class="text-left text-lg">
-          {formatDate(post._createdAt)}
+        <ImageGallery images={post?.gallery} client:load />
+        <p class="text-left text-sm tracking-tight">
+          {formatDate(post?._createdAt)}
         </p>
       </div>
     </div>
