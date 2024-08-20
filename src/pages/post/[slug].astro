@@ -31,7 +31,7 @@ const post = await getPost(slug, "en");
       post?.thumbnail ? (
         <Image
           class="mb-6 w-full object-cover"
-          src={urlFor(post.thumbnail).url()}
+          src={urlFor(post.thumbnail).width(1920).height(1080).url()}
           width={1920}
           height={1080}
           alt="Cover image"
