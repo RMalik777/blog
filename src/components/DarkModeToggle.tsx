@@ -9,7 +9,7 @@ export function DarkMode() {
 
   useEffect(() => {
     const localTheme = localStorage.getItem("theme");
-    if (localTheme === "light" || localTheme === "dark" || localTheme === "system") setTheme(localTheme);
+    if (localTheme === "light" || localTheme === "dark") setTheme(localTheme);
     else if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
       document.documentElement.classList.add("dark");
       document.documentElement.style.colorScheme = "dark";
@@ -22,8 +22,13 @@ export function DarkMode() {
   useEffect(() => {
     if (theme === "system") {
       localStorage.removeItem("theme");
-      document.documentElement.classList.remove("dark");
-      document.documentElement.style.removeProperty("color-scheme");
+      if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+        document.documentElement.classList.add("dark");
+        document.documentElement.style.colorScheme = "dark";
+      } else {
+        document.documentElement.classList.remove("dark");
+        document.documentElement.style.removeProperty("color-scheme");
+      }
     } else {
       localStorage.setItem("theme", theme);
       if (theme === "dark") {
