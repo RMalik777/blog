@@ -45,7 +45,7 @@ export default defineConfig({
     sitemap({
       filter: (page) => page !== "https://blog.raflimalik.com/admin",
       serialize: (page) => {
-        if (page.url == "https://blog.raflimalik.com") {
+        if (page.url == "https://blog.raflimalik.com/") {
           page.changefreq = "weekly";
           page.priority = 1;
           page.lastmod = new Date();
