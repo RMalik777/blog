@@ -10,6 +10,8 @@ export function DarkMode() {
   useEffect(() => {
     const localTheme = localStorage.getItem("theme");
     if (localTheme === "light" || localTheme === "dark" || localTheme === "system") setTheme(localTheme);
+    else if (window.matchMedia("(prefers-color-scheme: dark)").matches) setTheme("dark");
+    else setTheme("light");
   }, []);
 
   useEffect(() => {
