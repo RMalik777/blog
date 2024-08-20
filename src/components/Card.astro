@@ -1,9 +1,6 @@
 ---
 import { formatDate } from "../utils";
-import { urlFor } from "../utils/image";
 import type { Post } from "../utils/sanity";
-import { Image } from "astro:assets";
-
 interface Props {
   post: Post;
 }
@@ -11,25 +8,16 @@ interface Props {
 const { post } = Astro.props;
 ---
 
-<a class="flex flex-col gap-2 border p-2 md:flex-row md:gap-4" href={`/post/${post.slug.current}`}>
-  {
-    post?.thumbnail ? (
-      <Image
-        class="object-auto h-auto w-full object-cover md:h-auto md:w-2/5"
-        src={urlFor(post.thumbnail).width(500).height(300).url()}
-        width={500}
-        height={300}
-        alt="Cover image"
-      />
-    ) : null
-  }
+<a
+  class="flex flex-col gap-2 rounded border p-2 duration-200 hover:bg-neutral-50 md:flex-row md:gap-4"
+  href={`/post/${post.slug.current}`}>
   <div class="flex flex-col gap-2 md:gap-4">
+    <p class="text-sm font-light tracking-tight">
+      {formatDate(post._createdAt)}
+    </p>
     <h3 class="text-2xl font-semibold tracking-tighter xs:text-3xl md:text-4xl">
       {post.title}
     </h3>
     <p class="text-lg font-normal tracking-tight">{post.excerpt}</p>
-    <p class="font-light tracking-tight">
-      {formatDate(post._createdAt)}
-    </p>
   </div>
 </a>
