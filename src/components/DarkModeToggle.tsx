@@ -10,8 +10,13 @@ export function DarkMode() {
   useEffect(() => {
     const localTheme = localStorage.getItem("theme");
     if (localTheme === "light" || localTheme === "dark" || localTheme === "system") setTheme(localTheme);
-    else if (window.matchMedia("(prefers-color-scheme: dark)").matches) setTheme("dark");
-    else setTheme("light");
+    else if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+      document.documentElement.classList.add("dark");
+      document.documentElement.style.colorScheme = "dark";
+    } else {
+      document.documentElement.classList.remove("dark");
+      document.documentElement.style.removeProperty("color-scheme");
+    }
   }, []);
 
   useEffect(() => {
