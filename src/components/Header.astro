@@ -1,5 +1,5 @@
 ---
-import { DarkMode } from "@/components/DarkModeToggle";
+import DarkMode from "@/components/DarkModeToggle.astro";
 ---
 
 <header class="z-50 flex w-full items-center justify-between py-2 pb-4">
@@ -10,5 +10,5 @@ import { DarkMode } from "@/components/DarkModeToggle";
       Rafli Malik
     </a>
   </nav>
-  <DarkMode client:load />
+  <DarkMode />
 </header>
