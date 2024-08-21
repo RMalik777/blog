@@ -52,6 +52,23 @@ const { title, desc } = Astro.props;
 </style>
 
 <script is:inline>
+  const theme = window.localStorage.getItem("theme");
+  if (theme === "dark") {
+    document.documentElement.className = "dark";
+    document.documentElement.style.colorScheme = "dark";
+  } else if (theme === "light") {
+    document.documentElement.classList.remove("dark");
+    document.documentElement.style.colorScheme = "light";
+  } else {
+    if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+      document.documentElement.className = "dark";
+      document.documentElement.style.colorScheme = "dark";
+    } else {
+      document.documentElement.classList.remove("dark");
+      document.documentElement.style.colorScheme = "light";
+    }
+  }
+
   window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", (e) => {
     if (e.matches && !localStorage.theme) {
       if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
