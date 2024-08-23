@@ -34,30 +34,6 @@ const { title, desc } = Astro.props;
           document.documentElement.style.colorScheme = "light";
         }
       }
-
-      window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", (e) => {
-        if (e.matches && !localStorage.theme) {
-          if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
-            document.documentElement.className = "dark";
-            document.documentElement.style.colorScheme = "dark";
-          } else {
-            document.documentElement.classList.remove("dark");
-            document.documentElement.style.colorScheme = "light";
-          }
-        }
-      });
-
-      window.matchMedia("(prefers-color-scheme: light)").addEventListener("change", (e) => {
-        if (e.matches && !localStorage.theme) {
-          if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
-            document.documentElement.className = "dark";
-            document.documentElement.style.colorScheme = "dark";
-          } else {
-            document.documentElement.classList.remove("dark");
-            document.documentElement.style.colorScheme = "light";
-          }
-        }
-      });
     </script>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
@@ -92,3 +68,29 @@ const { title, desc } = Astro.props;
   @tailwind components;
   @tailwind utilities;
 </style>
+
+<script is:inline>
+  window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", (e) => {
+    if (e.matches && !localStorage.theme) {
+      if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+        document.documentElement.className = "dark";
+        document.documentElement.style.colorScheme = "dark";
+      } else {
+        document.documentElement.classList.remove("dark");
+        document.documentElement.style.colorScheme = "light";
+      }
+    }
+  });
+
+  window.matchMedia("(prefers-color-scheme: light)").addEventListener("change", (e) => {
+    if (e.matches && !localStorage.theme) {
+      if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+        document.documentElement.className = "dark";
+        document.documentElement.style.colorScheme = "dark";
+      } else {
+        document.documentElement.classList.remove("dark");
+        document.documentElement.style.colorScheme = "light";
+      }
+    }
+  });
+</script>
