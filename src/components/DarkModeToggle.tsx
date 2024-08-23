@@ -29,7 +29,7 @@ export function DarkMode() {
         document.documentElement.style.colorScheme = "dark";
       } else {
         document.documentElement.classList.remove("dark");
-        document.documentElement.style.colorScheme = "light";
+        document.documentElement.style.removeProperty("color-scheme");
       }
     }
   }, [theme]);
