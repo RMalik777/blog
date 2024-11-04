@@ -4,13 +4,13 @@ const dataset = import.meta.env.PUBLIC_SANITY_STUDIO_DATASET! || import.meta.env
 
 // Feel free to remove this check if you don't need it
 if (!projectId || !dataset) {
-  throw new Error(
-    `Missing environment variable(s). Check if named correctly in .env file.\n\nShould be:\nPUBLIC_SANITY_STUDIO_PROJECT_ID=${projectId}\nPUBLIC_SANITY_STUDIO_DATASET=${dataset}\n\nAvailable environment variables:\n${JSON.stringify(
-      import.meta.env,
-      null,
-      2
-    )}`
-  );
+	throw new Error(
+		`Missing environment variable(s). Check if named correctly in .env file.\n\nShould be:\nPUBLIC_SANITY_STUDIO_PROJECT_ID=${projectId}\nPUBLIC_SANITY_STUDIO_DATASET=${dataset}\n\nAvailable environment variables:\n${JSON.stringify(
+			import.meta.env,
+			null,
+			2,
+		)}`,
+	);
 }
 
 import { defineConfig } from "sanity";
@@ -20,23 +20,23 @@ import { documentInternationalization } from "@sanity/document-internationalizat
 import { schemaTypes } from "./schema";
 
 export default defineConfig({
-  name: "project-name",
-  title: "Project Name",
-  projectId,
-  dataset,
-  plugins: [
-    structureTool(),
-    visionTool(),
-    documentInternationalization({
-      supportedLanguages: [
-        { id: "en", title: "English" },
-        { id: "id", title: "Indonesian" },
-      ],
-      schemaTypes: ["post"],
-      apiVersion: "2024-08-16",
-    }),
-  ],
-  schema: {
-    types: schemaTypes,
-  },
+	name: "project-name",
+	title: "Project Name",
+	projectId,
+	dataset,
+	plugins: [
+		structureTool(),
+		visionTool(),
+		documentInternationalization({
+			supportedLanguages: [
+				{ id: "en", title: "English" },
+				{ id: "id", title: "Indonesian" },
+			],
+			schemaTypes: ["post"],
+			apiVersion: "2024-08-16",
+		}),
+	],
+	schema: {
+		types: schemaTypes,
+	},
 });

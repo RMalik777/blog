@@ -10,10 +10,10 @@ import { Image } from "astro:assets";
 import { ImageGallery } from "@/components/ImageGallery";
 
 export async function getStaticPaths() {
-  const posts = await getPosts("en");
-  return posts.map((post) => ({
-    params: { slug: post.slug.current },
-  }));
+	const posts = await getPosts("en");
+	return posts.map((post) => ({
+		params: { slug: post.slug.current },
+	}));
 }
 
 type Params = InferGetStaticParamsType<typeof getStaticPaths>;
@@ -22,38 +22,38 @@ const post = await getPost(slug, "en");
 ---
 
 <Layout title={post?.title! + " | Rafli Malik"} desc={post?.excerpt!}>
-  <section class="my-12 flex flex-col items-center">
-    <div class="mb-8 max-w-prose">
-      <h1 class="text-center text-5xl font-semibold tracking-tight">{post?.title}</h1>
-      <h2 class="text-center text-xl font-medium tracking-tight">{post?.location}</h2>
-    </div>
-    {
-      post?.thumbnail ? (
-        <Image
-          class="mb-6 w-full object-cover"
-          src={urlFor(post.thumbnail).width(1920).height(1080).url()}
-          width={1920}
-          height={1080}
-          alt="Cover image"
-          loading="eager"
-        />
-      ) : (
-        <hr class="w-full max-w-prose border" />
-      )
-    }
-    <div class="flex flex-col items-center">
-      <div class="flex w-full max-w-prose flex-col items-start gap-8">
-        <p class="text-2xl font-medium tracking-tight">{post?.excerpt}</p>
-        <div class="flex flex-col gap-4 font-normal leading-relaxed">
-          <PortableText value={post?.body} />
-        </div>
-        <div class="w-full px-14 lg:px-12 xl:px-0">
-          <ImageGallery images={post?.gallery} client:load />
-        </div>
-        <p class="text-left text-sm tracking-tight">
-          {formatDate(post?._createdAt)}
-        </p>
-      </div>
-    </div>
-  </section>
+	<section class="my-12 flex flex-col items-center">
+		<div class="mb-8 max-w-prose">
+			<h1 class="text-center text-5xl font-semibold tracking-tight">{post?.title}</h1>
+			<h2 class="text-center text-xl font-medium tracking-tight">{post?.location}</h2>
+		</div>
+		{
+			post?.thumbnail ? (
+				<Image
+					class="mb-6 w-full object-cover"
+					src={urlFor(post.thumbnail).width(1920).height(1080).url()}
+					width={1920}
+					height={1080}
+					alt="Cover image"
+					loading="eager"
+				/>
+			) : (
+				<hr class="w-full max-w-prose border" />
+			)
+		}
+		<div class="flex flex-col items-center">
+			<div class="flex w-full max-w-prose flex-col items-start gap-8">
+				<p class="text-2xl font-medium tracking-tight">{post?.excerpt}</p>
+				<div class="flex flex-col gap-4 font-normal leading-relaxed">
+					<PortableText value={post?.body} />
+				</div>
+				<div class="w-full px-14 lg:px-12 xl:px-0">
+					<ImageGallery images={post?.gallery} client:load />
+				</div>
+				<p class="text-left text-sm tracking-tight">
+					{formatDate(post?._createdAt)}
+				</p>
+			</div>
+		</div>
+	</section>
 </Layout>
