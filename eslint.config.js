@@ -1,10 +1,13 @@
 import eslintPluginAstro from "eslint-plugin-astro";
-import jsPlugin from "@eslint/js";
+import js from "@eslint/js";
+import ts from "typescript-eslint";
 import prettierPlugin from "eslint-config-prettier";
 
 export default [
-	jsPlugin.configs.recommended,
-	...eslintPluginAstro.configs["jsx-a11y-recommended"],
+	js.configs.recommended,
+	...ts.configs.strict,
+	...ts.configs.stylistic,
+	...eslintPluginAstro.configs["flat/jsx-a11y-recommended"],
 	prettierPlugin,
 	{
 		ignores: ["node_modules", "*.mjs"],

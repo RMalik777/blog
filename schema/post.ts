@@ -1,4 +1,3 @@
-import { rules } from "eslint-config-prettier";
 import { defineField, defineType, type SlugValidationContext } from "sanity";
 
 export default defineType({

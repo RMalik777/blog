@@ -20,7 +20,7 @@ export function ImageGallery({ images }: Readonly<Props>) {
 			}}
 		>
 			<CarouselContent>
-				{images.map((img, index) => (
+				{images.map((img) => (
 					<CarouselItem key={urlFor(img).toString()}>
 						<img
 							src={urlFor(img).width(1920).height(1080).url() ?? ""}

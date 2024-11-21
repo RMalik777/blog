@@ -21,7 +21,7 @@ const { slug } = Astro.params as Params;
 const post = await getPost(slug, "en");
 ---
 
-<Layout title={post?.title! + " | Rafli Malik"} desc={post?.excerpt!}>
+<Layout title={post?.title ? post.title + " | Rafli Malik" : "Blog | Rafli Malik"} desc={post?.excerpt ?? ""}>
 	<section class="my-12 flex flex-col items-center">
 		<div class="mb-8 max-w-prose">
 			<h1 class="text-center text-5xl font-semibold tracking-tight">{post?.title}</h1>
