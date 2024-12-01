@@ -43,7 +43,7 @@
 		"tailwindcss-animate": "^1.0.7"
 	},
 	"devDependencies": {
-		"@eslint/js": "^9.15.0",
+		"@eslint/js": "^9.16.0",
 		"@portabletext/types": "^2.0.13",
 		"@sanity/types": "^3.64.3",
 		"@types/eslint": "^9.6.1",
