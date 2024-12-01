@@ -25,7 +25,7 @@
 		"@sanity/astro": "^3.1.6",
 		"@sanity/document-internationalization": "^3.2.0",
 		"@sanity/image-url": "^1.1.0",
-		"@sanity/vision": "^3.64.3",
+		"@sanity/vision": "^3.65.1",
 		"astro": "^4.16.14",
 		"astro-portabletext": "^0.10.1",
 		"autoprefixer": "^10.4.20",
