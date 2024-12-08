@@ -6,6 +6,7 @@ import prettierPlugin from "eslint-config-prettier";
 export default [
 	js.configs.recommended,
 	...ts.configs.strict,
+	...ts.configs.stylistic,
 	...eslintPluginAstro.configs["flat/jsx-a11y-recommended"],
 	prettierPlugin,
 	{
