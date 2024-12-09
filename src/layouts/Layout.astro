@@ -1,5 +1,5 @@
 ---
-import { ViewTransitions } from "astro:transitions";
+import { ClientRouter } from "astro:transitions";
 import "@fontsource-variable/inter";
 import "@fontsource/geist-mono";
 import "@fontsource-variable/lora";
@@ -49,7 +49,7 @@ const { title, desc } = Astro.props;
 		<meta property="og:url" content="https://wraflimalik.com/" />
 		<meta property="og:type" content="website" />
 		<meta property="og:site_name" content="Rafli Malik" />
-		<ViewTransitions />
+		<ClientRouter />
 	</head>
 	<body
 		class="min-w-dvw flex min-h-dvh flex-col items-center justify-between bg-purple-50/50 antialiased duration-150 ease-out dark:bg-neutral-950"

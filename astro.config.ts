@@ -20,13 +20,13 @@ import react from "@astrojs/react";
 import cloudflare from "@astrojs/cloudflare";
 import tailwind from "@astrojs/tailwind";
 
-import sitemap from "@astrojs/sitemap";
+import sitemap, { ChangeFreqEnum } from "@astrojs/sitemap";
 
 // https://astro.build/config
 export default defineConfig({
 	site: "https://blog.raflimalik.com",
 	// Hybrid+adapter is required to support embedded Sanity Studio
-	output: "hybrid",
+	output: "static",
 	adapter: cloudflare(),
 	integrations: [
 		sanity({
@@ -46,13 +46,13 @@ export default defineConfig({
 			filter: (page) => page !== "https://blog.raflimalik.com/admin",
 			serialize: (page) => {
 				if (page.url == "https://blog.raflimalik.com/") {
-					page.changefreq = "weekly";
+					page.changefreq = ChangeFreqEnum.MONTHLY;
 					page.priority = 1;
-					page.lastmod = new Date();
+					page.lastmod = new Date().toString();
 				} else {
-					page.changefreq = "monthly";
+					page.changefreq = ChangeFreqEnum.YEARLY;
 					page.priority = 0.8;
-					page.lastmod = new Date();
+					page.lastmod = new Date().toString();
 				}
 				return page;
 			},

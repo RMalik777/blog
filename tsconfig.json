@@ -12,11 +12,11 @@
 		"forceConsistentCasingInFileNames": true,
 		"esModuleInterop": true,
 		"module": "esnext",
-		"moduleResolution": "node",
+		"moduleResolution": "bundler",
 		"resolveJsonModule": true,
 		"isolatedModules": true,
 		"jsx": "preserve"
 	},
-	"includes": ["**/*.ts", "**/*.tsx"],
+	"includes": [".astro/types.d.ts", "**/*.ts", "**/*.tsx"],
 	"exclude": ["node_modules", "dist", ".vercel"]
 }
