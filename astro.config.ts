@@ -27,6 +27,8 @@ export default defineConfig({
 	site: "https://blog.raflimalik.com",
 	// Hybrid+adapter is required to support embedded Sanity Studio
 	output: "static",
+	// Build will fail in cloudflare, patch in this PR:
+	// https://github.com/withastro/adapters/pull/436
 	adapter: cloudflare(),
 	integrations: [
 		sanity({
