@@ -24,7 +24,6 @@ import sitemap, { ChangeFreqEnum } from "@astrojs/sitemap";
 
 // https://astro.build/config
 export default defineConfig({
-  // @ts-expect-error - temporary while waiting fix
 	resolve: {
 		// Use react-dom/server.edge instead of react-dom/server.browser for React 19.
 		// Without this, MessageChannel from node:worker_threads needs to be polyfilled.
