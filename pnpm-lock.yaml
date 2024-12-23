@@ -91,8 +91,8 @@ importers:
         specifier: ^2.0.13
         version: 2.0.13
       '@sanity/types':
-        specifier: ^3.67.1
-        version: 3.67.1(debug@4.4.0)
+        specifier: ^3.68.3
+        version: 3.68.3(@types/react@19.0.2)
       '@types/eslint':
         specifier: ^9.6.1
         version: 9.6.1
@@ -2097,6 +2097,11 @@ packages:
 
   '@sanity/types@3.67.1':
     resolution: {integrity: sha512-zK9kazYnwN8X5TLZrmhIgTCiRJKCYg4B9soSFcX1SxZUP90cJpF7MCWh5p73f/9JgZA1nzkolHU4p0GAk5d0zA==}
+
+  '@sanity/types@3.68.3':
+    resolution: {integrity: sha512-JemibQXC08rHIXgjUH/p2TCiiD9wq6+dDkCvVHOooCvaYZNhAe2S9FAEkaA6qwWtPzyY2r6/tj1eDgNeLgXN1Q==}
+    peerDependencies:
+      '@types/react': 18 || 19
 
   '@sanity/ui@2.10.9':
     resolution: {integrity: sha512-pNjalR+On4tI/F6VGMzE07Jig0X6pPOeYqTZrTGo6ebCMXuzhSOqjm+bJx56z8OTNcjWihIi2G3U4t7/HJ4kIA==}
@@ -8119,7 +8124,7 @@ snapshots:
 
   '@pkgr/core@0.1.1': {}
 
-  '@portabletext/editor@1.15.3(@sanity/block-tools@3.67.1(debug@4.4.0))(@sanity/schema@3.67.1(debug@4.4.0))(@sanity/types@3.67.1)(@types/react@19.0.2)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(rxjs@7.8.1)(styled-components@6.1.13(react-dom@19.0.0(react@19.0.0))(react@19.0.0))':
+  '@portabletext/editor@1.15.3(@sanity/block-tools@3.67.1(debug@4.4.0))(@sanity/schema@3.67.1(debug@4.4.0))(@sanity/types@3.67.1(debug@4.4.0))(@types/react@19.0.2)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(rxjs@7.8.1)(styled-components@6.1.13(react-dom@19.0.0(react@19.0.0))(react@19.0.0))':
     dependencies:
       '@portabletext/patches': 1.1.0
       '@sanity/block-tools': 3.67.1(debug@4.4.0)
@@ -8547,7 +8552,7 @@ snapshots:
       react-copy-to-clipboard: 5.1.0(react@19.0.0)
       react-dom: 19.0.0(react@19.0.0)
 
-  '@sanity/insert-menu@1.0.16(@emotion/is-prop-valid@1.2.2)(@sanity/types@3.67.1)(react-dom@19.0.0(react@19.0.0))(react-is@18.3.1)(react@19.0.0)(styled-components@6.1.13(react-dom@19.0.0(react@19.0.0))(react@19.0.0))':
+  '@sanity/insert-menu@1.0.16(@emotion/is-prop-valid@1.2.2)(@sanity/types@3.67.1(debug@4.4.0))(react-dom@19.0.0(react@19.0.0))(react-is@18.3.1)(react@19.0.0)(styled-components@6.1.13(react-dom@19.0.0(react@19.0.0))(react@19.0.0))':
     dependencies:
       '@sanity/icons': 3.5.2(react@19.0.0)
       '@sanity/types': 3.67.1(debug@4.4.0)
@@ -8696,6 +8701,13 @@ snapshots:
     dependencies:
       '@sanity/client': 6.24.1(debug@4.4.0)
       '@types/react': 18.3.16
+    transitivePeerDependencies:
+      - debug
+
+  '@sanity/types@3.68.3(@types/react@19.0.2)':
+    dependencies:
+      '@sanity/client': 6.24.1(debug@4.4.0)
+      '@types/react': 19.0.2
     transitivePeerDependencies:
       - debug
 
@@ -12731,7 +12743,7 @@ snapshots:
       '@dnd-kit/sortable': 7.0.2(@dnd-kit/core@6.3.1(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(react@19.0.0)
       '@dnd-kit/utilities': 3.2.2(react@19.0.0)
       '@juggle/resize-observer': 3.4.0
-      '@portabletext/editor': 1.15.3(@sanity/block-tools@3.67.1(debug@4.4.0))(@sanity/schema@3.67.1(debug@4.4.0))(@sanity/types@3.67.1)(@types/react@19.0.2)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(rxjs@7.8.1)(styled-components@6.1.13(react-dom@19.0.0(react@19.0.0))(react@19.0.0))
+      '@portabletext/editor': 1.15.3(@sanity/block-tools@3.67.1(debug@4.4.0))(@sanity/schema@3.67.1(debug@4.4.0))(@sanity/types@3.67.1(debug@4.4.0))(@types/react@19.0.2)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(rxjs@7.8.1)(styled-components@6.1.13(react-dom@19.0.0(react@19.0.0))(react@19.0.0))
       '@portabletext/react': 3.2.0(react@19.0.0)
       '@rexxars/react-json-inspector': 8.0.1(react@19.0.0)
       '@sanity/asset-utils': 2.2.1
@@ -12747,7 +12759,7 @@ snapshots:
       '@sanity/icons': 3.5.2(react@19.0.0)
       '@sanity/image-url': 1.1.0
       '@sanity/import': 3.37.9
-      '@sanity/insert-menu': 1.0.16(@emotion/is-prop-valid@1.2.2)(@sanity/types@3.67.1)(react-dom@19.0.0(react@19.0.0))(react-is@18.3.1)(react@19.0.0)(styled-components@6.1.13(react-dom@19.0.0(react@19.0.0))(react@19.0.0))
+      '@sanity/insert-menu': 1.0.16(@emotion/is-prop-valid@1.2.2)(@sanity/types@3.67.1(debug@4.4.0))(react-dom@19.0.0(react@19.0.0))(react-is@18.3.1)(react@19.0.0)(styled-components@6.1.13(react-dom@19.0.0(react@19.0.0))(react@19.0.0))
       '@sanity/logos': 2.1.13(@sanity/color@3.0.6)(react@19.0.0)
       '@sanity/migrate': 3.67.1
       '@sanity/mutator': 3.67.1
