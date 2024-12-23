@@ -57,8 +57,8 @@ importers:
         specifier: ^5.0.8
         version: 5.0.8(@types/node@22.10.2)(jiti@1.21.6)(rollup@4.28.1)(typescript@5.7.2)(yaml@2.6.1)
       astro-portabletext:
-        specifier: ^0.10.1
-        version: 0.10.1
+        specifier: ^0.11.0
+        version: 0.11.0(astro@5.0.8(@types/node@22.10.2)(jiti@1.21.6)(rollup@4.28.1)(typescript@5.7.2)(yaml@2.6.1))
       autoprefixer:
         specifier: ^10.4.20
         version: 10.4.20(postcss@8.4.49)
@@ -2582,8 +2582,10 @@ packages:
     peerDependencies:
       astro: ^4.12.0 || ^5.0.0-beta
 
-  astro-portabletext@0.10.1:
-    resolution: {integrity: sha512-AwuUxYzOO7Xzlo+UvCmtiERoeYzub3Aj3dEV672Ro/hNZIIRqbsHpCveq5OoaCkjjWso53D+DxxbBmqBPPIJAQ==}
+  astro-portabletext@0.11.0:
+    resolution: {integrity: sha512-ftCwtR8hUV9/vug46xVFwI9aZTwXi6fREOGo11ogvt/UKDheZcMmiKxBSqh9ABRPVBJf6UkFmKTkbVawnu6gdA==}
+    peerDependencies:
+      astro: '>=4.6.0'
 
   astro@5.0.8:
     resolution: {integrity: sha512-nW4TmRCeG3t2iDmm91KPvYpYNljNfjeaneN4BX463DKAZ3MPmUn92aKefOXC0bjMHQ2Gamc8MIZ6sORS2EhyAQ==}
@@ -9289,10 +9291,11 @@ snapshots:
       pathe: 1.1.2
       recast: 0.23.9
 
-  astro-portabletext@0.10.1:
+  astro-portabletext@0.11.0(astro@5.0.8(@types/node@22.10.2)(jiti@1.21.6)(rollup@4.28.1)(typescript@5.7.2)(yaml@2.6.1)):
     dependencies:
       '@portabletext/toolkit': 2.0.16
       '@portabletext/types': 2.0.13
+      astro: 5.0.8(@types/node@22.10.2)(jiti@1.21.6)(rollup@4.28.1)(typescript@5.7.2)(yaml@2.6.1)
 
   astro@5.0.8(@types/node@22.10.2)(jiti@1.21.6)(rollup@4.28.1)(typescript@5.7.2)(yaml@2.6.1):
     dependencies:
