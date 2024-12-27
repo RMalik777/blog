@@ -35,10 +35,7 @@ export default defineConfig({
 		},
 	},
 	site: "https://blog.raflimalik.com",
-	// Hybrid+adapter is required to support embedded Sanity Studio
 	output: "static",
-	// Build will fail in cloudflare, patch in this PR:
-	// https://github.com/withastro/adapters/pull/436
 	adapter: cloudflare(),
 	integrations: [
 		sanity({
@@ -47,7 +44,7 @@ export default defineConfig({
 			studioBasePath: "/admin",
 			useCdn: false,
 			// `false` if you want to ensure fresh data
-			apiVersion: "2024-07-29", // Set to date of setup to use the latest API version
+			apiVersion: "2024-12-27", // Set to date of setup to use the latest API version
 		}),
 		react(),
 		// Required for Sanity Studio
