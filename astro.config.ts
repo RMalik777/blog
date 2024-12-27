@@ -24,16 +24,15 @@ import sitemap, { ChangeFreqEnum } from "@astrojs/sitemap";
 
 // https://astro.build/config
 export default defineConfig({
-	// @ts-expect-error - temporary fix
-	resolve: {
-		// Use react-dom/server.edge instead of react-dom/server.browser for React 19.
-		// Without this, MessageChannel from node:worker_threads needs to be polyfilled.
-		alias:
-			process.env.NODE_ENV === "production"
-				? {
-						"react-dom/server": "react-dom/server.edge",
-					}
-				: undefined,
+	vite: {
+		resolve: {
+			// Use react-dom/server.edge instead of react-dom/server.browser for React 19.
+			// Without this, MessageChannel from node:worker_threads needs to be polyfilled.
+			// @ts-expect-error - temporary fix https://github.com/withastro/adapters/pull/436
+			alias: import.meta.env.PROD && {
+				"react-dom/server": "react-dom/server.edge",
+			},
+		},
 	},
 	site: "https://blog.raflimalik.com",
 	// Hybrid+adapter is required to support embedded Sanity Studio
