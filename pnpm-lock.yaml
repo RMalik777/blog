@@ -30,8 +30,8 @@ importers:
         specifier: ^5.1.0
         version: 5.1.0
       '@fontsource/geist-mono':
-        specifier: ^5.1.0
-        version: 5.1.0
+        specifier: ^5.1.1
+        version: 5.1.1
       '@radix-ui/react-slot':
         specifier: ^1.1.1
         version: 1.1.1(@types/react@19.0.2)(react@19.0.0)
@@ -1433,8 +1433,8 @@ packages:
   '@fontsource-variable/lora@5.1.0':
     resolution: {integrity: sha512-dYb/q3hMuabXDy3yHTtjIn+nzYIJ+jguULrPelHPBfGFlvwTI0HAETP+tZm/0aRISD7q2nWTK3tQA8GFZRDTmg==}
 
-  '@fontsource/geist-mono@5.1.0':
-    resolution: {integrity: sha512-MDFgmKUdDbV357vD2bOZAro597Nd2md01GAdr3GSZteCJQdPT/UhHUBCAxl9KUiH03aMPFM9Rx7x8/EtrJmpKg==}
+  '@fontsource/geist-mono@5.1.1':
+    resolution: {integrity: sha512-Rr/VXX3qyRsLgEFwFUqhDS7PORzQUBDLoQc8bONbBz+hZ+SD8U0nEzHqRFBzT3zFcsf/0bMyCQPZUktKwPt3GQ==}
 
   '@humanfs/core@0.19.1':
     resolution: {integrity: sha512-5DyQ4+1JEUzejeK1JGICcideyfUbGixgS9jNgex5nqkW+cY7WZhxBigmieN5Qnw9ZosSNVC9KQKyb+GUaGyKUA==}
@@ -8413,7 +8413,7 @@ snapshots:
 
   '@fontsource-variable/lora@5.1.0': {}
 
-  '@fontsource/geist-mono@5.1.0': {}
+  '@fontsource/geist-mono@5.1.1': {}
 
   '@humanfs/core@0.19.1': {}
 
