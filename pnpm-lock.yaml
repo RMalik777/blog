@@ -69,8 +69,8 @@ importers:
         specifier: ^8.5.1
         version: 8.5.1(react@19.0.0)
       groq:
-        specifier: ^3.68.3
-        version: 3.68.3
+        specifier: ^3.69.0
+        version: 3.69.0
       lucide-react:
         specifier: ^0.471.0
         version: 0.471.0(react@19.0.0)
@@ -4023,10 +4023,6 @@ packages:
   groq-js@1.14.2:
     resolution: {integrity: sha512-1CtOqgATOhmB6jRKL6zvojb2Vt8aP2y6m/7ZN4JlpFhyB/d8WRW3/kZgapIUHys6/Vrkk1oTbjjDbxNL8QxHSQ==}
     engines: {node: '>= 14'}
-
-  groq@3.68.3:
-    resolution: {integrity: sha512-z0CCcwZFm9Gy+vHbKfTTTO09ym08eBnGfiRRZTiB1T3KMSIYevz+1Z5RMI0TqSjafVyDwx9Ehi6Wihixewf6DA==}
-    engines: {node: '>=18'}
 
   groq@3.69.0:
     resolution: {integrity: sha512-z/UnX+4op+xM1X4BStvydrHg484CbI/VoZcfhGDlIZA0xj5DeKQsPO3MXyWqLvuMcU2nnDlnpJZ1ccI1XAlO8Q==}
@@ -11691,8 +11687,6 @@ snapshots:
       debug: 4.4.0
     transitivePeerDependencies:
       - supports-color
-
-  groq@3.68.3: {}
 
   groq@3.69.0: {}
 
