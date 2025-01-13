@@ -36,7 +36,7 @@
 		"lucide-react": "^0.469.0",
 		"react": "^19.0.0",
 		"react-dom": "^19.0.0",
-		"sanity": "^3.68.3"
+		"sanity": "^3.69.0"
 	},
 	"devDependencies": {
 		"@eslint/js": "^9.17.0",
