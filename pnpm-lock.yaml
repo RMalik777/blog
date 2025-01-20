@@ -69,8 +69,8 @@ importers:
         specifier: ^8.5.2
         version: 8.5.2(react@19.0.0)
       groq:
-        specifier: ^3.69.0
-        version: 3.69.0
+        specifier: ^3.70.0
+        version: 3.70.0
       lucide-react:
         specifier: ^0.471.0
         version: 0.471.0(react@19.0.0)
@@ -4015,6 +4015,10 @@ packages:
 
   groq@3.69.0:
     resolution: {integrity: sha512-z/UnX+4op+xM1X4BStvydrHg484CbI/VoZcfhGDlIZA0xj5DeKQsPO3MXyWqLvuMcU2nnDlnpJZ1ccI1XAlO8Q==}
+    engines: {node: '>=18'}
+
+  groq@3.70.0:
+    resolution: {integrity: sha512-OMYdOmBZCZ7zbXOicpJUpAZc8kOSDW2+TaO3GRjBx3bJTk04lPsqgG1Mfhi1E+lEVbhjhW3h+k7TCyApe4idQA==}
     engines: {node: '>=18'}
 
   gunzip-maybe@1.4.2:
@@ -11673,6 +11677,8 @@ snapshots:
       - supports-color
 
   groq@3.69.0: {}
+
+  groq@3.70.0: {}
 
   gunzip-maybe@1.4.2:
     dependencies:
