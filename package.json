@@ -30,7 +30,7 @@
 		"astro": "^5.1.5",
 		"astro-portabletext": "^0.11.0",
 		"autoprefixer": "^10.4.20",
-		"embla-carousel-autoplay": "^8.5.1",
+		"embla-carousel-autoplay": "^8.5.2",
 		"embla-carousel-react": "^8.5.2",
 		"groq": "^3.70.0",
 		"lucide-react": "^0.471.0",
