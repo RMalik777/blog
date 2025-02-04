@@ -27,7 +27,7 @@
 		"@sanity/document-internationalization": "^3.3.1",
 		"@sanity/image-url": "^1.1.0",
 		"@sanity/vision": "^3.71.2",
-		"astro": "^5.1.10",
+		"astro": "^5.2.3",
 		"astro-portabletext": "^0.11.0",
 		"autoprefixer": "^10.4.20",
 		"embla-carousel-autoplay": "^8.5.2",
