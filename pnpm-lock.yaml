@@ -10,7 +10,7 @@ importers:
     dependencies:
       '@astrojs/check':
         specifier: ^0.9.4
-        version: 0.9.4(prettier-plugin-astro@0.14.1)(prettier@3.4.2)(typescript@5.7.3)
+        version: 0.9.4(prettier-plugin-astro@0.14.1)(prettier@3.5.1)(typescript@5.7.3)
       '@astrojs/cloudflare':
         specifier: ^12.2.1
         version: 12.2.1(@types/node@22.13.1)(astro@5.2.3(@types/node@22.13.1)(jiti@2.4.2)(rollup@4.34.1)(terser@5.37.0)(typescript@5.7.3)(yaml@2.7.0))(jiti@2.4.2)(terser@5.37.0)(yaml@2.7.0)
@@ -130,14 +130,14 @@ importers:
         specifier: ^6.10.2
         version: 6.10.2(eslint@9.19.0(jiti@2.4.2))
       prettier:
-        specifier: ^3.4.2
-        version: 3.4.2
+        specifier: ^3.5.1
+        version: 3.5.1
       prettier-plugin-astro:
         specifier: ^0.14.1
         version: 0.14.1
       prettier-plugin-tailwindcss:
         specifier: ^0.6.11
-        version: 0.6.11(prettier-plugin-astro@0.14.1)(prettier@3.4.2)
+        version: 0.6.11(prettier-plugin-astro@0.14.1)(prettier@3.5.1)
       rimraf:
         specifier: ^6.0.1
         version: 6.0.1
@@ -858,6 +858,9 @@ packages:
   '@codemirror/autocomplete@6.18.4':
     resolution: {integrity: sha512-sFAphGQIqyQZfP2ZBsSHV7xQvo9Py0rV0dW7W3IMRdS+zDuNb2l3no78CvUaWKGfzFjI4FTrLdUSj86IGb2hRA==}
 
+  '@codemirror/autocomplete@6.18.6':
+    resolution: {integrity: sha512-PHHBXFomUs5DF+9tCOM/UoW6XQ4R44lLNNhRaW9PKPTU0D7lIjRg3ElxaJnTwsl/oHiR93WSXDBrekhoUGCPtg==}
+
   '@codemirror/commands@6.8.0':
     resolution: {integrity: sha512-q8VPEFaEP4ikSlt6ZxjB3zW72+7osfAYW9i8Zu943uqbKuz6utc1+F170hyLUCUltXORjQXRyYQNfkckzA/bPQ==}
 
@@ -872,6 +875,9 @@ packages:
 
   '@codemirror/search@6.5.8':
     resolution: {integrity: sha512-PoWtZvo7c1XFeZWmmyaOp2G0XVbOnm+fJzvghqGAktBW3cufwJUWvSCcNG0ppXiBEM05mZu6RhMtXPv2hpllig==}
+
+  '@codemirror/search@6.5.9':
+    resolution: {integrity: sha512-7DdQ9aaZMMxuWB1u6IIFWWuK9NocVZwvo4nG8QjJTS6oZGvteoLSiXw3EbVZVlO08Ri2ltO89JVInMpfcJxhtg==}
 
   '@codemirror/state@6.5.2':
     resolution: {integrity: sha512-FVqsPqtPWKVVL3dPSxy8wEF/ymIEuVzF1PK3VbUgrxXpJUSHQWWZz4JMToquRxnkw+36LTamCZG2iua2Ptq0fA==}
@@ -2251,6 +2257,10 @@ packages:
 
   '@sanity/client@6.27.2':
     resolution: {integrity: sha512-x5KaN5atPnEFa3GGSH3YKSAYh1MAECvEs9o+NSLd5W19imxvSxPquQBv0Q60Zdsg6iaTJPAAa79Ak5Xyg2FHvA==}
+    engines: {node: '>=14.18'}
+
+  '@sanity/client@6.28.0':
+    resolution: {integrity: sha512-2kXmiOPAfT2/5cxmwIyLv+/1HXbZXwWYAtaPkOoujySVP3tcXYmzTwYbjUXMlRcvs0u28C2afZmSNoK+RDiQqA==}
     engines: {node: '>=14.18'}
 
   '@sanity/codegen@3.72.1':
@@ -5113,6 +5123,11 @@ packages:
     engines: {node: ^18 || >=20}
     hasBin: true
 
+  nanoid@5.1.0:
+    resolution: {integrity: sha512-zDAl/llz8Ue/EblwSYwdxGBYfj46IM1dhjVi8dyp9LQffoIGxJEAHj2oeZ4uNcgycSRcQ83CnfcZqEJzVDLcDw==}
+    engines: {node: ^18 || >=20}
+    hasBin: true
+
   natural-compare@1.4.0:
     resolution: {integrity: sha512-OWND8ei3VtNC9h7V60qff3SVobHr996CTwgxubgyQYEpg290h9J0buyECNNJexkFm5sOajh5G116RYA1c8ZMSw==}
 
@@ -5565,8 +5580,8 @@ packages:
     engines: {node: '>=10.13.0'}
     hasBin: true
 
-  prettier@3.4.2:
-    resolution: {integrity: sha512-e9MewbtFo+Fevyuxn/4rrcDAaq0IYxPGLvObpQjiZBMAzB9IGmzlnG9RZy3FFas+eBMu2vA0CszMeduow5dIuQ==}
+  prettier@3.5.1:
+    resolution: {integrity: sha512-hPpFQvHwL3Qv5AdRvBFMhnKo4tYxp0ReXiPn2bxkiohEX6mBeBwEpBSQTkD458RaaDKQMYSp4hX4UtfUTA5wDw==}
     engines: {node: '>=14'}
     hasBin: true
 
@@ -7303,9 +7318,9 @@ snapshots:
       css-tree: 2.3.1
       is-potential-custom-element-name: 1.0.1
 
-  '@astrojs/check@0.9.4(prettier-plugin-astro@0.14.1)(prettier@3.4.2)(typescript@5.7.3)':
+  '@astrojs/check@0.9.4(prettier-plugin-astro@0.14.1)(prettier@3.5.1)(typescript@5.7.3)':
     dependencies:
-      '@astrojs/language-server': 2.15.4(prettier-plugin-astro@0.14.1)(prettier@3.4.2)(typescript@5.7.3)
+      '@astrojs/language-server': 2.15.4(prettier-plugin-astro@0.14.1)(prettier@3.5.1)(typescript@5.7.3)
       chokidar: 4.0.3
       kleur: 4.1.5
       typescript: 5.7.3
@@ -7349,7 +7364,7 @@ snapshots:
 
   '@astrojs/internal-helpers@0.5.0': {}
 
-  '@astrojs/language-server@2.15.4(prettier-plugin-astro@0.14.1)(prettier@3.4.2)(typescript@5.7.3)':
+  '@astrojs/language-server@2.15.4(prettier-plugin-astro@0.14.1)(prettier@3.5.1)(typescript@5.7.3)':
     dependencies:
       '@astrojs/compiler': 2.10.3
       '@astrojs/yaml2ts': 0.2.2
@@ -7363,14 +7378,14 @@ snapshots:
       volar-service-css: 0.0.62(@volar/language-service@2.4.11)
       volar-service-emmet: 0.0.62(@volar/language-service@2.4.11)
       volar-service-html: 0.0.62(@volar/language-service@2.4.11)
-      volar-service-prettier: 0.0.62(@volar/language-service@2.4.11)(prettier@3.4.2)
+      volar-service-prettier: 0.0.62(@volar/language-service@2.4.11)(prettier@3.5.1)
       volar-service-typescript: 0.0.62(@volar/language-service@2.4.11)
       volar-service-typescript-twoslash-queries: 0.0.62(@volar/language-service@2.4.11)
       volar-service-yaml: 0.0.62(@volar/language-service@2.4.11)
       vscode-html-languageservice: 5.3.1
       vscode-uri: 3.0.8
     optionalDependencies:
-      prettier: 3.4.2
+      prettier: 3.5.1
       prettier-plugin-astro: 0.14.1
     transitivePeerDependencies:
       - typescript
@@ -8220,6 +8235,13 @@ snapshots:
       '@codemirror/view': 6.36.2
       '@lezer/common': 1.2.3
 
+  '@codemirror/autocomplete@6.18.6':
+    dependencies:
+      '@codemirror/language': 6.10.8
+      '@codemirror/state': 6.5.2
+      '@codemirror/view': 6.36.2
+      '@lezer/common': 1.2.3
+
   '@codemirror/commands@6.8.0':
     dependencies:
       '@codemirror/language': 6.10.8
@@ -8253,6 +8275,12 @@ snapshots:
       crelt: 1.0.6
 
   '@codemirror/search@6.5.8':
+    dependencies:
+      '@codemirror/state': 6.5.2
+      '@codemirror/view': 6.36.2
+      crelt: 1.0.6
+
+  '@codemirror/search@6.5.9':
     dependencies:
       '@codemirror/state': 6.5.2
       '@codemirror/view': 6.36.2
@@ -9367,7 +9395,7 @@ snapshots:
       get-it: 8.6.7(debug@4.4.0)
       groq-js: 1.15.0
       pkg-dir: 5.0.0
-      prettier: 3.4.2
+      prettier: 3.5.1
       semver: 7.7.1
       validate-npm-package-name: 3.0.0
     transitivePeerDependencies:
@@ -9380,6 +9408,14 @@ snapshots:
       - typescript
 
   '@sanity/client@6.27.2(debug@4.4.0)':
+    dependencies:
+      '@sanity/eventsource': 5.0.2
+      get-it: 8.6.7(debug@4.4.0)
+      rxjs: 7.8.1
+    transitivePeerDependencies:
+      - debug
+
+  '@sanity/client@6.28.0':
     dependencies:
       '@sanity/eventsource': 5.0.2
       get-it: 8.6.7(debug@4.4.0)
@@ -9565,11 +9601,11 @@ snapshots:
 
   '@sanity/mutate@0.10.1-canary.5(xstate@5.19.2)':
     dependencies:
-      '@sanity/client': 6.27.2(debug@4.4.0)
+      '@sanity/client': 6.28.0
       '@sanity/diff-match-patch': 3.2.0
       hotscript: 1.0.13
       mendoza: 3.0.8
-      nanoid: 5.0.9
+      nanoid: 5.1.0
       rxjs: 7.8.1
     optionalDependencies:
       xstate: 5.19.2
@@ -9642,7 +9678,7 @@ snapshots:
       outdent: 0.8.0
       parse-git-config: 3.0.0
       pkg-up: 3.1.0
-      prettier: 3.4.2
+      prettier: 3.5.1
       pretty-bytes: 5.6.0
       prompts: 2.4.2
       recast: 0.23.9
@@ -10820,11 +10856,11 @@ snapshots:
 
   codemirror@6.0.1:
     dependencies:
-      '@codemirror/autocomplete': 6.18.4
+      '@codemirror/autocomplete': 6.18.6
       '@codemirror/commands': 6.8.0
       '@codemirror/language': 6.10.8
       '@codemirror/lint': 6.8.4
-      '@codemirror/search': 6.5.8
+      '@codemirror/search': 6.5.9
       '@codemirror/state': 6.5.2
       '@codemirror/view': 6.36.2
 
@@ -13102,6 +13138,8 @@ snapshots:
 
   nanoid@5.0.9: {}
 
+  nanoid@5.1.0: {}
+
   natural-compare@1.4.0: {}
 
   neotraverse@0.6.18: {}
@@ -13492,19 +13530,19 @@ snapshots:
   prettier-plugin-astro@0.14.1:
     dependencies:
       '@astrojs/compiler': 2.10.3
-      prettier: 3.4.2
+      prettier: 3.5.1
       sass-formatter: 0.7.9
 
-  prettier-plugin-tailwindcss@0.6.11(prettier-plugin-astro@0.14.1)(prettier@3.4.2):
+  prettier-plugin-tailwindcss@0.6.11(prettier-plugin-astro@0.14.1)(prettier@3.5.1):
     dependencies:
-      prettier: 3.4.2
+      prettier: 3.5.1
     optionalDependencies:
       prettier-plugin-astro: 0.14.1
 
   prettier@2.8.7:
     optional: true
 
-  prettier@3.4.2: {}
+  prettier@3.5.1: {}
 
   pretty-bytes@5.6.0: {}
 
@@ -15184,12 +15222,12 @@ snapshots:
     optionalDependencies:
       '@volar/language-service': 2.4.11
 
-  volar-service-prettier@0.0.62(@volar/language-service@2.4.11)(prettier@3.4.2):
+  volar-service-prettier@0.0.62(@volar/language-service@2.4.11)(prettier@3.5.1):
     dependencies:
       vscode-uri: 3.0.8
     optionalDependencies:
       '@volar/language-service': 2.4.11
-      prettier: 3.4.2
+      prettier: 3.5.1
 
   volar-service-typescript-twoslash-queries@0.0.62(@volar/language-service@2.4.11):
     dependencies:
