@@ -69,8 +69,8 @@ importers:
         specifier: ^8.5.2
         version: 8.5.2(react@19.0.0)
       groq:
-        specifier: ^3.75.1
-        version: 3.75.1
+        specifier: ^3.76.3
+        version: 3.76.3
       lucide-react:
         specifier: ^0.475.0
         version: 0.475.0(react@19.0.0)
@@ -884,6 +884,9 @@ packages:
 
   '@codemirror/view@6.36.2':
     resolution: {integrity: sha512-DZ6ONbs8qdJK0fdN7AB82CgI6tYXf4HWk1wSVa0+9bhVznCuuvhQtX8bFBoy3dv8rZSQqUd8GvhVAcielcidrA==}
+
+  '@codemirror/view@6.36.3':
+    resolution: {integrity: sha512-N2bilM47QWC8Hnx0rMdDxO2x2ImJ1FvZWXubwKgjeoOrWwEiFrtpA7SFHcuZ+o2Ze2VzbkgbzWVj4+V18LVkeg==}
 
   '@cspotcode/source-map-support@0.8.1':
     resolution: {integrity: sha512-IchNf6dN4tHoMFIn/7OE8LWZ19Y6q/67Bmf6vnGREv8RSbBVb9LPJxEcnwrcwX6ixSvaiGoomAUvu4YSxXrVgw==}
@@ -4096,6 +4099,10 @@ packages:
     resolution: {integrity: sha512-CCj2w9yKcPlNnMlU76t5DvUryFlY0OnYbmRQpXpClm4Yts9mkHCfZUqrJUMP7nXCjyf49h06fHtj1CgFLq15ag==}
     engines: {node: '>=18'}
 
+  groq@3.76.3:
+    resolution: {integrity: sha512-2lK7USo8dlp9DPePcdGohnMdynTF9tGXkoyus/q4AY77+vOmcC/kdEYb9n6H0OqG1b9hSM/fONMez58VwnRgkw==}
+    engines: {node: '>=18'}
+
   gunzip-maybe@1.4.2:
     resolution: {integrity: sha512-4haO1M4mLO91PW57BMsDFf75UmwoRX0GkdD+Faw+Lr+r/OZrOCS0pIBwOL1xCKQqnQzbNFGgK2V2CpBUPeFNTw==}
     hasBin: true
@@ -5043,6 +5050,11 @@ packages:
 
   nanoid@5.1.0:
     resolution: {integrity: sha512-zDAl/llz8Ue/EblwSYwdxGBYfj46IM1dhjVi8dyp9LQffoIGxJEAHj2oeZ4uNcgycSRcQ83CnfcZqEJzVDLcDw==}
+    engines: {node: ^18 || >=20}
+    hasBin: true
+
+  nanoid@5.1.2:
+    resolution: {integrity: sha512-b+CiXQCNMUGe0Ri64S9SXFcP9hogjAJ2Rd6GdVxhPLRm7mhGaM7VgOvCAJ1ZshfHbqVDI3uqTI5C8/GaKuLI7g==}
     engines: {node: ^18 || >=20}
     hasBin: true
 
@@ -8177,10 +8189,16 @@ snapshots:
     dependencies:
       '@codemirror/language': 6.10.8
       '@codemirror/state': 6.5.2
-      '@codemirror/view': 6.36.2
+      '@codemirror/view': 6.36.3
       '@lezer/highlight': 1.2.1
 
   '@codemirror/view@6.36.2':
+    dependencies:
+      '@codemirror/state': 6.5.2
+      style-mod: 4.1.2
+      w3c-keyname: 2.2.8
+
+  '@codemirror/view@6.36.3':
     dependencies:
       '@codemirror/state': 6.5.2
       style-mod: 4.1.2
@@ -9437,7 +9455,7 @@ snapshots:
       '@sanity/diff-match-patch': 3.2.0
       hotscript: 1.0.13
       mendoza: 3.0.8
-      nanoid: 5.1.0
+      nanoid: 5.1.2
       rxjs: 7.8.1
     optionalDependencies:
       xstate: 5.19.2
@@ -10687,7 +10705,7 @@ snapshots:
       '@codemirror/lint': 6.8.4
       '@codemirror/search': 6.5.9
       '@codemirror/state': 6.5.2
-      '@codemirror/view': 6.36.2
+      '@codemirror/view': 6.36.3
 
   color-convert@1.9.3:
     dependencies:
@@ -11789,6 +11807,8 @@ snapshots:
       - supports-color
 
   groq@3.75.1: {}
+
+  groq@3.76.3: {}
 
   gunzip-maybe@1.4.2:
     dependencies:
@@ -12967,6 +12987,8 @@ snapshots:
   nanoid@3.3.8: {}
 
   nanoid@5.1.0: {}
+
+  nanoid@5.1.2: {}
 
   natural-compare@1.4.0: {}
 
