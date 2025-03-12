@@ -91,8 +91,8 @@ importers:
         specifier: ^2.0.13
         version: 2.0.13
       '@sanity/types':
-        specifier: ^3.75.1
-        version: 3.75.1(@types/react@19.0.9)
+        specifier: ^3.79.0
+        version: 3.79.0(@types/react@19.0.9)
       '@types/eslint':
         specifier: ^9.6.1
         version: 9.6.1
@@ -2472,13 +2472,13 @@ packages:
     peerDependencies:
       '@types/react': 18 || 19
 
-  '@sanity/types@3.75.1':
-    resolution: {integrity: sha512-Vf4mWuVRjvo8WfUgpbpjUykBxwTsJDBOjkPIWppR1KlHoK9/W1MWQ23WqOp6Bw5OycrOjyXbeECyDKJdOOj+MQ==}
+  '@sanity/types@3.78.1':
+    resolution: {integrity: sha512-/T7VD+XWYWrpMa0eogeaRTe1BZwW0kcWQb+FXYN3Fu9tSSkM/Q1VW6W0HBcJZcCkK2RzVBqy43bWKbsLgC0iZw==}
     peerDependencies:
       '@types/react': 18 || 19
 
-  '@sanity/types@3.78.1':
-    resolution: {integrity: sha512-/T7VD+XWYWrpMa0eogeaRTe1BZwW0kcWQb+FXYN3Fu9tSSkM/Q1VW6W0HBcJZcCkK2RzVBqy43bWKbsLgC0iZw==}
+  '@sanity/types@3.79.0':
+    resolution: {integrity: sha512-b3DkhaO11fo7OL8yulImstIu5QmGC166ENYJG8dtYBUkEbmRGgPtTnhPrfsNi57UWJ5bDef1ieDMUjB/heugsg==}
     peerDependencies:
       '@types/react': 18 || 19
 
@@ -10115,14 +10115,14 @@ snapshots:
     transitivePeerDependencies:
       - debug
 
-  '@sanity/types@3.75.1(@types/react@19.0.9)':
+  '@sanity/types@3.78.1(@types/react@19.0.9)(debug@4.4.0)':
     dependencies:
-      '@sanity/client': 6.28.0
+      '@sanity/client': 6.28.3(debug@4.4.0)
       '@types/react': 19.0.9
     transitivePeerDependencies:
       - debug
 
-  '@sanity/types@3.78.1(@types/react@19.0.9)(debug@4.4.0)':
+  '@sanity/types@3.79.0(@types/react@19.0.9)':
     dependencies:
       '@sanity/client': 6.28.3(debug@4.4.0)
       '@types/react': 19.0.9
