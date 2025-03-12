@@ -69,8 +69,8 @@ importers:
         specifier: ^8.5.2
         version: 8.5.2(react@19.0.0)
       groq:
-        specifier: ^3.75.1
-        version: 3.75.1
+        specifier: ^3.79.0
+        version: 3.79.0
       lucide-react:
         specifier: ^0.479.0
         version: 0.479.0(react@19.0.0)
@@ -4360,12 +4360,12 @@ packages:
     resolution: {integrity: sha512-PmP7MJhc3FhtR12Fc/7NZCFo52z9+ZUoNkthupdJTvBqJJFKmavW315UhgSgWWs7gL6yLmuRMOufmtmYPMJcpw==}
     engines: {node: '>= 14'}
 
-  groq@3.75.1:
-    resolution: {integrity: sha512-CCj2w9yKcPlNnMlU76t5DvUryFlY0OnYbmRQpXpClm4Yts9mkHCfZUqrJUMP7nXCjyf49h06fHtj1CgFLq15ag==}
-    engines: {node: '>=18'}
-
   groq@3.78.1:
     resolution: {integrity: sha512-eIgcFmqNq00yv00oHDk7qkDMcEQeDgT2HaIKL3KDVC4Od/A1LkPklzpxDbU78bLXnWoillLfkSV9FMHal+ti6w==}
+    engines: {node: '>=18'}
+
+  groq@3.79.0:
+    resolution: {integrity: sha512-e5z7LuqWYUsGjztgsilcSVGAmBNa35Nw4qOzSlKD3oPNqMM9y891Qj8w+HKc/3LWXaCTd5vc4gBcnwaTIib1BQ==}
     engines: {node: '>=18'}
 
   gunzip-maybe@1.4.2:
@@ -12505,9 +12505,9 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  groq@3.75.1: {}
-
   groq@3.78.1: {}
+
+  groq@3.79.0: {}
 
   gunzip-maybe@1.4.2:
     dependencies:
