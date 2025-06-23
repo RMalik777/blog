@@ -50,19 +50,19 @@ export function DarkMode() {
 			<Sun
 				className={
 					"h-[1.2rem] w-[1.2rem] transition-all ease-out " +
-					(theme == "light" ? "rotate-0 scale-100" : "-rotate-0 scale-0")
+					(theme == "light" ? "scale-100 rotate-0" : "scale-0 -rotate-0")
 				}
 			/>
 			<Moon
 				className={
 					"absolute h-[1.2rem] w-[1.2rem] transition-all ease-out " +
-					(theme == "dark" ? "rotate-0 scale-100" : "rotate-90 scale-0")
+					(theme == "dark" ? "scale-100 rotate-0" : "scale-0 rotate-90")
 				}
 			/>
 			<Contrast
 				className={
 					"absolute h-[1.2rem] w-[1.2rem] transition-all ease-out " +
-					(theme == "system" ? "rotate-0 scale-100" : "rotate-90 scale-0")
+					(theme == "system" ? "scale-100 rotate-0" : "scale-0 rotate-90")
 				}
 			/>
 		</Button>

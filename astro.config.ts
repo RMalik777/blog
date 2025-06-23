@@ -18,9 +18,10 @@ import react from "@astrojs/react";
 // Change this depending on your hosting provider (Vercel, Netlify etc)
 // https://docs.astro.build/en/guides/server-side-rendering/#adding-an-adapter
 import cloudflare from "@astrojs/cloudflare";
-import tailwind from "@astrojs/tailwind";
 
 import sitemap, { ChangeFreqEnum } from "@astrojs/sitemap";
+
+import tailwindcss from "@tailwindcss/vite";
 
 // https://astro.build/config
 export default defineConfig({
@@ -33,6 +34,8 @@ export default defineConfig({
 				"react-dom/server": "react-dom/server.edge",
 			},
 		},
+
+		plugins: [tailwindcss()],
 	},
 	site: "https://blog.raflimalik.com",
 	output: "static",
@@ -48,9 +51,6 @@ export default defineConfig({
 		}),
 		react(),
 		// Required for Sanity Studio
-		tailwind({
-			applyBaseStyles: false,
-		}),
 		sitemap({
 			filter: (page) => page !== "https://blog.raflimalik.com/admin",
 			serialize: (page) => {

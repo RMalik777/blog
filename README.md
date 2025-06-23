@@ -19,7 +19,6 @@ Run the following commands
 
 1. `npm install` to install dependencies
 2. `npx sanity@latest init --env`, this will:
-
    - ask you to select or create a Sanity project and dataset
    - output a `.env` file with appropriate variables
    - _(or use `sanity init --env` if you have the CLI installed)_

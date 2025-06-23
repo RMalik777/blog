@@ -9,14 +9,14 @@ const { post } = Astro.props;
 ---
 
 <a
-	class="flex flex-col gap-2 rounded border p-2 duration-200 hover:bg-neutral-400/5 dark:border-neutral-700 dark:hover:bg-white/10 md:flex-row md:gap-4"
+	class="flex flex-col gap-2 rounded border p-2 duration-200 hover:bg-neutral-400/5 md:flex-row md:gap-4 dark:border-neutral-700 dark:hover:bg-white/10"
 	href={`/post/${post.slug.current}`}
 >
 	<div class="flex flex-col gap-2 md:gap-4">
-		<p class="text-xs font-light tracking-tight xs:text-sm">
+		<p class="xs:text-sm text-xs font-light tracking-tight">
 			{formatDate(post._createdAt)}
 		</p>
-		<h3 class="text-2xl font-semibold tracking-tighter xs:text-3xl md:text-4xl">
+		<h3 class="xs:text-3xl text-2xl font-semibold tracking-tighter md:text-4xl">
 			{post.title}
 		</h3>
 		<p class="text-base font-normal tracking-tight md:text-lg">{post.excerpt}</p>

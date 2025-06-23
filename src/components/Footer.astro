@@ -59,7 +59,7 @@ const backLink = [
 	class="flex w-full flex-col items-center justify-center border-neutral-700 bg-neutral-950 text-neutral-50 dark:border-t-2"
 >
 	<div
-		class="flex w-full flex-col items-start justify-between px-4 py-6 xs:flex-row xs:items-center xs:px-6 xs:py-8 sm:px-8 sm:py-8 md:py-10 lg:py-12"
+		class="xs:flex-row xs:items-center xs:px-6 xs:py-8 flex w-full flex-col items-start justify-between px-4 py-6 sm:px-8 sm:py-8 md:py-10 lg:py-12"
 	>
 		<div class="flex flex-col items-start justify-start gap-2 sm:flex-row sm:gap-8 lg:gap-16">
 			{
@@ -69,7 +69,10 @@ const backLink = [
 						<ul>
 							{link.children.map((child) => (
 								<li>
-									<a href={child.href} class="tracking-tight text-purple-400 hover:text-purple-500 hover:underline">
+									<a
+										href={child.href}
+										class="tracking-tight text-purple-400 duration-150 ease-out hover:text-purple-500 hover:underline"
+									>
 										{child.title}
 									</a>
 								</li>
@@ -80,22 +83,22 @@ const backLink = [
 			}
 		</div>
 		<a
-			class="hidden text-xl font-medium tracking-tighter text-purple-400 hover:text-purple-500 hover:underline xs:block lg:text-2xl"
+			class="xs:block hidden text-xl font-medium tracking-tighter text-purple-400 duration-150 ease-out hover:text-purple-500 hover:underline lg:text-2xl"
 			href="http://raflimalik.com"
 			target="_blank">Rafli Malik | 2024</a
 		>
 	</div>
-	<div class="flex w-full flex-col items-start gap-1 px-4 text-left text-base tracking-tight xs:px-6 sm:px-8">
+	<div class="xs:px-6 flex w-full flex-col items-start gap-1 px-4 text-left text-xs tracking-tight sm:px-8">
 		<a
-			class="block tracking-tighter text-purple-400 hover:text-purple-500 hover:underline xs:hidden"
+			class="xs:hidden block text-sm tracking-tighter text-purple-400 duration-150 ease-out hover:text-purple-500 hover:underline"
 			href="http://raflimalik.com"
 			target="_blank">Rafli Malik | 2024</a
 		>
-		<hr class="w-full border-neutral-500" />
+		<div class="w-full border-b-[2px] border-neutral-500"></div>
 		<p class="w-full">
 			This website is licensed under
 			<a
-				class="text-purple-400 hover:text-purple-500 hover:underline"
+				class="text-purple-400 duration-150 ease-out hover:text-purple-500 hover:underline"
 				href="https://creativecommons.org/licenses/by/4.0/"
 				target="_blank"
 				rel="noopener noreferrer"
@@ -108,7 +111,7 @@ const backLink = [
 		<p class="w-full">
 			The source code for this website is available on
 			<a
-				class="text-purple-400 hover:text-purple-500 hover:underline"
+				class="text-purple-400 duration-150 ease-out hover:text-purple-500 hover:underline"
 				href="https://github.com/RMalik777/blog"
 				target="_blank"
 				rel="noopener noreferrer"
@@ -118,7 +121,7 @@ const backLink = [
 			</a>
 			under the
 			<a
-				class="text-purple-400 hover:text-purple-500 hover:underline"
+				class="text-purple-400 duration-150 ease-out hover:text-purple-500 hover:underline"
 				href="https://github.com/RMalik777/blog/blob/main/LICENSE-CODE"
 				target="_blank"
 				rel="noopener noreferrer"
@@ -128,15 +131,15 @@ const backLink = [
 			</a>
 		</p>
 	</div>
-	<div class="flex w-full flex-col items-center justify-center gap-1 bg-black p-2 py-4 text-white xs:flex-row">
+	<div class="xs:flex-row flex w-full flex-col items-center justify-center gap-1 bg-black p-2 py-4 text-white">
 		<p>Built with</p>
-		<div class="flex w-full flex-row flex-wrap items-center justify-center xs:w-fit xs:flex-nowrap">
+		<div class="xs:w-fit xs:flex-nowrap flex w-full flex-row flex-wrap items-center justify-center">
 			<a href="https://astro.build" target="_blank" rel="noopener noreferrer">
-				<Image src={AstroLogo} alt="Astro Logo" class="h-8 w-auto min-w-min xs:h-12" />
+				<Image src={AstroLogo} alt="Astro Logo" class="xs:h-12 h-8 w-auto min-w-min" />
 			</a>
-			<p class="hidden xs:block">+</p>
+			<p class="xs:block hidden">+</p>
 			<a href="https://sanity.io" target="_blank" rel="noopener noreferrer">
-				<Image src={SanityLogo} alt="Astro Logo" class="h-6 w-auto min-w-min xs:h-10" />
+				<Image src={SanityLogo} alt="Astro Logo" class="xs:h-10 h-6 w-auto min-w-min" />
 			</a>
 		</div>
 	</div>
