@@ -26,7 +26,7 @@ import tailwindcss from "@tailwindcss/vite";
 // https://astro.build/config
 export default defineConfig({
 	vite: {
-    // @ts-expect-error - vite version mismatch between Astro and Tailwind CSS. Waiting for Astro to use Vite 7
+		// @ts-expect-error - vite version mismatch between Astro and Tailwind CSS. Waiting for Astro to use Vite 7
 		plugins: [tailwindcss()],
 		resolve: {
 			// Use react-dom/server.edge instead of react-dom/server.browser for React 19.
