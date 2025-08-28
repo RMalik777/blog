@@ -69,8 +69,8 @@ importers:
         specifier: ^8.5.2
         version: 8.6.0(react@19.1.0)
       groq:
-        specifier: ^4.4.1
-        version: 4.4.1
+        specifier: ^4.6.0
+        version: 4.6.0
       lucide-react:
         specifier: ^0.539.0
         version: 0.539.0(react@19.1.0)
@@ -4811,12 +4811,12 @@ packages:
     resolution: {integrity: sha512-6TZD6H1y3P7zk0BQharjFa7BOivV9nFL6KKVZbRZRH0yOSSyu2xHglTO48b1/2mCEdYoBQpvE7rjCDUf6XmQYQ==}
     engines: {node: '>=18'}
 
-  groq@4.4.1:
-    resolution: {integrity: sha512-tMOcGMWzGR8gjtLKBCVc8VhVlH+J73J0dlOdhfepZj7hJ6Z4ftQ9M1szTm4QJfTnOvVd1ys39yZuFTTtBJ3P4w==}
-    engines: {node: '>=20.19 <22 || >=22.12'}
-
   groq@4.5.0:
     resolution: {integrity: sha512-gAvcn4Y6KUwH/DVS59vIBw5kxzFlV8KDaKqa0M+BOa6EdzuoTeXSpGIH1wmKT+Yv6w3XqPVw5ArKQWsG810hog==}
+    engines: {node: '>=20.19 <22 || >=22.12'}
+
+  groq@4.6.0:
+    resolution: {integrity: sha512-nQdkN9z5cCS51qOFk7wP+BpPgCOqVRpQF+U4hPezO5PrIA0HBIuPwwZayjnvP93CXsMnNJa0GnQn7/Xlam8DiQ==}
     engines: {node: '>=20.19 <22 || >=22.12'}
 
   gunzip-maybe@1.4.2:
@@ -13425,9 +13425,9 @@ snapshots:
 
   groq@3.88.1-typegen-experimental.0: {}
 
-  groq@4.4.1: {}
-
   groq@4.5.0: {}
+
+  groq@4.6.0: {}
 
   gunzip-maybe@1.4.2:
     dependencies:
