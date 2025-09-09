@@ -39,7 +39,7 @@
 		"sanity": "^4.6.0"
 	},
 	"devDependencies": {
-		"@eslint/js": "^9.34.0",
+		"@eslint/js": "^9.35.0",
 		"@portabletext/types": "^2.0.15",
 		"@sanity/types": "^4.6.0",
 		"@types/eslint-config-prettier": "^6.11.3",
