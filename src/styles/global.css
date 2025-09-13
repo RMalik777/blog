@@ -1,26 +1,5 @@
 @import "tailwindcss";
-
 @custom-variant dark (&:is(.dark *));
-
-@layer base {
-	*,
-	::after,
-	::before,
-	::backdrop,
-	::file-selector-button {
-		border-color: var(--color-gray-200, currentcolor);
-	}
-}
-
-@layer base {
-	* {
-		@apply border-border;
-	}
-
-	body {
-		@apply bg-background text-foreground;
-	}
-}
 
 @theme {
 	--font-serif: "Lora Variable", Georgia, Cambria, "Times New Roman", Times, serif;
@@ -136,6 +115,16 @@
 	--sidebar-accent-foreground: oklch(0.985 0 0);
 	--sidebar-border: oklch(1 0 0 / 10%);
 	--sidebar-ring: oklch(0.556 0 0);
+}
+
+@layer base {
+	*,
+	::after,
+	::before,
+	::backdrop,
+	::file-selector-button {
+		border-color: var(--color-gray-200, currentcolor);
+	}
 }
 
 @layer base {
