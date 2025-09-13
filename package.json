@@ -13,8 +13,8 @@
 	},
 	"dependencies": {
 		"@astrojs/check": "^0.9.4",
-		"@astrojs/cloudflare": "^12.6.7",
-		"@astrojs/react": "^4.2.1",
+		"@astrojs/cloudflare": "^12.6.8",
+		"@astrojs/react": "^4.3.1",
 		"@astrojs/sitemap": "^3.5.1",
 		"@fontsource-variable/inter": "^5.2.5",
 		"@fontsource-variable/lora": "^5.1.1",
@@ -22,30 +22,30 @@
 		"@radix-ui/react-slot": "^1.1.2",
 		"@radix-ui/react-tabs": "^1.1.13",
 		"@sanity/astro": "^3.2.1",
-		"@sanity/client": "^7.11.0",
+		"@sanity/client": "^7.11.1",
 		"@sanity/document-internationalization": "^4.0.0",
 		"@sanity/image-url": "^1.2.0",
-		"@sanity/vision": "^4.6.1",
+		"@sanity/vision": "^4.8.1",
 		"@tailwindcss/vite": "^4.1.13",
-		"astro": "^5.13.5",
-		"astro-portabletext": "^0.11.2",
+		"astro": "^5.13.7",
+		"astro-portabletext": "^0.11.3",
 		"autoprefixer": "^10.4.20",
 		"embla-carousel-autoplay": "^8.5.2",
 		"embla-carousel-react": "^8.5.2",
-		"groq": "^4.6.1",
-		"lucide-react": "^0.542.0",
+		"groq": "^4.8.1",
+		"lucide-react": "^0.544.0",
 		"react": "^19.1.1",
 		"react-dom": "^19.1.1",
-		"sanity": "^4.6.1"
+		"sanity": "^4.8.1"
 	},
 	"devDependencies": {
 		"@eslint/js": "^9.35.0",
 		"@portabletext/types": "^2.0.15",
-		"@sanity/types": "^4.6.1",
+		"@sanity/types": "^4.8.1",
 		"@types/eslint-config-prettier": "^6.11.3",
-		"@types/react": "^19.1.12",
+		"@types/react": "^19.1.13",
 		"@types/react-dom": "^19.1.9",
-		"@typescript-eslint/parser": "^8.42.0",
+		"@typescript-eslint/parser": "^8.43.0",
 		"class-variance-authority": "^0.7.1",
 		"clsx": "^2.1.1",
 		"eslint": "^9.35.0",
@@ -68,5 +68,5 @@
 	"engines": {
 		"node": ">= 18.20.4"
 	},
-	"packageManager": "pnpm@10.12.2+sha512.a32540185b964ee30bb4e979e405adc6af59226b438ee4cc19f9e8773667a66d302f5bfee60a39d3cac69e35e4b96e708a71dd002b7e9359c4112a1722ac323f"
+	"packageManager": "pnpm@10.16.0"
 }
