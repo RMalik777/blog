@@ -43,7 +43,7 @@
 		"@portabletext/types": "^2.0.15",
 		"@sanity/types": "^4.8.1",
 		"@types/eslint-config-prettier": "^6.11.3",
-		"@types/react": "^19.1.13",
+		"@types/react": "^19.1.15",
 		"@types/react-dom": "^19.1.9",
 		"@typescript-eslint/parser": "^8.43.0",
 		"class-variance-authority": "^0.7.1",
