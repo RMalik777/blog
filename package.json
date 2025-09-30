@@ -56,7 +56,7 @@
 		"prettier-plugin-astro": "^0.14.1",
 		"prettier-plugin-tailwindcss": "^0.6.14",
 		"rimraf": "^6.0.1",
-		"sharp": "^0.34.3",
+		"sharp": "^0.34.4",
 		"tailwind-merge": "^3.0.1",
 		"tailwindcss": "^4.1.13",
 		"tailwindcss-animate": "^1.0.7",
