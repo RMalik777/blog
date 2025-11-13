@@ -27,7 +27,7 @@
 		"@sanity/image-url": "^1.2.0",
 		"@sanity/vision": "^4.12.0",
 		"@tailwindcss/vite": "^4.1.16",
-		"astro": "^5.15.3",
+		"astro": "^5.15.6",
 		"astro-portabletext": "^0.11.3",
 		"autoprefixer": "^10.4.20",
 		"embla-carousel-autoplay": "^8.5.2",
