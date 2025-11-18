@@ -41,7 +41,7 @@
 	"devDependencies": {
 		"@eslint/js": "^9.39.0",
 		"@portabletext/types": "^2.0.15",
-		"@sanity/types": "^4.12.0",
+		"@sanity/types": "^4.15.0",
 		"@types/eslint-config-prettier": "^6.11.3",
 		"@types/react": "^19.2.2",
 		"@types/react-dom": "^19.2.2",
