@@ -36,6 +36,14 @@ const { title, desc } = Astro.props;
 				}
 			}
 		</script>
+		<script>
+			import { configure } from "onedollarstats";
+			if (typeof window !== "undefined") {
+				configure({
+					trackLocalhostAs: "blog.raflimalik.com",
+				});
+			}
+		</script>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />

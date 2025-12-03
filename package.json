@@ -34,6 +34,7 @@
 		"embla-carousel-react": "^8.5.2",
 		"groq": "^4.19.0",
 		"lucide-react": "^0.555.0",
+		"onedollarstats": "^0.0.11",
 		"react": "^19.2.0",
 		"react-dom": "^19.2.0",
 		"sanity": "^4.19.0"
