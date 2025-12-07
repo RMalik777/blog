@@ -32,7 +32,7 @@
 		"autoprefixer": "^10.4.20",
 		"embla-carousel-autoplay": "^8.5.2",
 		"embla-carousel-react": "^8.5.2",
-		"groq": "^4.19.0",
+		"groq": "^4.20.3",
 		"lucide-react": "^0.555.0",
 		"onedollarstats": "^0.0.11",
 		"react": "^19.2.0",
