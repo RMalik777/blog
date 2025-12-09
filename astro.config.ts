@@ -39,7 +39,9 @@ export default defineConfig({
 	},
 	site: "https://blog.raflimalik.com",
 	output: "static",
-	adapter: cloudflare(),
+	adapter: cloudflare({
+		imageService: "compile",
+	}),
 	integrations: [
 		sanity({
 			projectId,
