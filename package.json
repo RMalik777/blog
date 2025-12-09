@@ -68,5 +68,12 @@
 	},
 	"engines": {
 		"node": ">= 20.19.0"
+	},
+	"pnpm": {
+		"onlyBuiltDependencies": [
+			"esbuild",
+			"sharp",
+			"workerd"
+		]
 	}
 }
