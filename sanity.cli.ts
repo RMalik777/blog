@@ -16,5 +16,7 @@ export default defineCliConfig({
 		dataset,
 	},
 	studioHost: "https://blog.raflimalik.com/admin",
-	autoUpdates: true,
+	deployment: {
+		autoUpdates: true,
+	},
 });
