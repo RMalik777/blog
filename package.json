@@ -29,7 +29,7 @@
 		"@tailwindcss/vite": "^4.1.17",
 		"astro": "^5.16.4",
 		"astro-portabletext": "^0.12.0",
-		"autoprefixer": "^10.4.22",
+		"autoprefixer": "^10.4.23",
 		"embla-carousel-autoplay": "^8.6.0",
 		"embla-carousel-react": "^8.6.0",
 		"groq": "^4.21.1",
