@@ -1,5 +1,7 @@
 # A minimal Astro site with Sanity Studio
 
+[![CodSpeed](https://img.shields.io/endpoint?url=https://codspeed.io/badge.json)](https://codspeed.io/RMalik777/blog)
+
 This starter uses [Astro](https://astro.build/) for the front end and [Sanity](https://sanity.io/) to handle its content.
 
 ## Featuring
@@ -42,14 +44,14 @@ If you intend to use TypeScript, you can safely remove the `remove-typescript.mj
 
 ## Removing the embedded Studio
 
-If you wish to manage and host the Studio separately, you remove the `studioBasePath` property for the `sanity` configuration in `astro.config.mjs`. You can also remove the following dependencies:
+If you wish to manage and host the Studio separately, you remove the `studioBasePath` property for the `sanity` configuration in `astro.config.mjs`. You can also remove the following dependencies:
 
 - `output` in `astro.config.mjs`…
   - …and `adapter` in `astro.config.mjs`
 - `react()` in `astro.config.mjs`
 - `@sanity/vision` `react` `react-dom` `@types/react` `@types/react-dom` from `package.json`
 - `schema` folder (you might want to copy this to the new Studio location)
-- `sanity.config.ts` (you might want to copy this to the new Studio location)
+- `sanity.config.ts` (you might want to copy this to the new Studio location)
 
 ## Deployments
 
@@ -57,7 +59,7 @@ Feel free to deploy the App to whichever hosting provider you prefer ([Vercel](h
 
 ### Deploying the Studio on \*\.sanity.studio
 
-You can also deploy the Sanity Studio on its own URL by running `npx sanity deploy`, provided you have added a [`sanity.cli.ts` configuration file](https://www.sanity.io/docs/cli):
+You can also deploy the Sanity Studio on its own URL by running `npx sanity deploy`, provided you have added a [`sanity.cli.ts` configuration file](https://www.sanity.io/docs/cli):
 
 ```ts
 // sanity.cli.ts
