@@ -1,6 +1,6 @@
 import { bench } from "vitest";
-import { formatDate } from "@/utils";
-import { cn } from "@/lib/utils";
+import { formatDate } from "../utils";
+import { cn } from "../lib/utils";
 
 // Benchmark for formatDate utility
 bench("formatDate: format ISO date string", () => {
