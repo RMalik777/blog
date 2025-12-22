@@ -33,8 +33,3 @@ bench("cn: merge with object conditionals", () => {
 		"text-sm": false,
 	});
 });
-
-// Benchmark complex class merging scenarios
-bench("cn: complex tailwind class merging", () => {
-	cn("bg-blue-500 px-4 py-2 hover:bg-blue-600", "rounded font-bold text-white", "transition-colors duration-200");
-});
