@@ -69,8 +69,8 @@ importers:
         specifier: ^8.6.0
         version: 8.6.0(react@19.2.3)
       groq:
-        specifier: ^5.2.0
-        version: 5.2.0
+        specifier: ^5.4.0
+        version: 5.4.0
       lucide-react:
         specifier: ^0.562.0
         version: 0.562.0(react@19.2.3)
@@ -4841,10 +4841,6 @@ packages:
   groq@3.88.1-typegen-experimental.0:
     resolution: {integrity: sha512-6TZD6H1y3P7zk0BQharjFa7BOivV9nFL6KKVZbRZRH0yOSSyu2xHglTO48b1/2mCEdYoBQpvE7rjCDUf6XmQYQ==}
     engines: {node: '>=18'}
-
-  groq@5.2.0:
-    resolution: {integrity: sha512-8U/gKHbzyEXGUn2u9MilxSQsuzBrgP6I9LtUgiDrdbf1BBtee/W6qD9WYjqWmt+BXkf655umbmUs8q98XO7xZA==}
-    engines: {node: '>=20.19 <22 || >=22.12'}
 
   groq@5.4.0:
     resolution: {integrity: sha512-XrqvE7n/a62zxi6rbaqVcPMyStJ1IlDBK+eaxzThaovqjOUviazlCl/9WFuryPxenEkX8GYaw9FvE1orZErGig==}
@@ -13396,8 +13392,6 @@ snapshots:
       - supports-color
 
   groq@3.88.1-typegen-experimental.0: {}
-
-  groq@5.2.0: {}
 
   groq@5.4.0: {}
 
