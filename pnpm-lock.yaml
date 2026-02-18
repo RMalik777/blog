@@ -75,8 +75,8 @@ importers:
         specifier: ^0.563.0
         version: 0.563.0(react@19.2.4)
       onedollarstats:
-        specifier: ^0.0.11
-        version: 0.0.11
+        specifier: ^0.0.12
+        version: 0.0.12
       react:
         specifier: ^19.2.4
         version: 19.2.4
@@ -6457,8 +6457,8 @@ packages:
   once@1.4.0:
     resolution: {integrity: sha512-lNaJgI+2Q5URQBkccEKHTQOPaXdUxnZZElQTZY0MFUAuaEqe1E+Nyvgdz/aIyNi6Z9MzO5dv1H8n58/GELp3+w==}
 
-  onedollarstats@0.0.11:
-    resolution: {integrity: sha512-GboD/AZdfQB9Bhs0uupp40jG/F+yI4ed7rkUI6zbtXXqqKdo8qlT1ZqGATXF4zccBXnPylUvG7bYpiDyaONpjg==}
+  onedollarstats@0.0.12:
+    resolution: {integrity: sha512-YPGGUxVqAstQmMmWNi4ce/UPeogj2eIa4k/uwZaWIvgSwzp2E/wZ8z7ZFIgISKxvWM0zJOSOGYyL2ZxrcGE/Qw==}
 
   oneline@1.0.4:
     resolution: {integrity: sha512-+hK7NemLRAJhl+cIi+G6cGrAcIlUIO0bY5XkP6OKFB6Gz3kVFrkh4Ad8t4bkiAWdsCN25OF/rNb1K/BE1ldivg==}
@@ -15676,7 +15676,7 @@ snapshots:
     dependencies:
       wrappy: 1.0.2
 
-  onedollarstats@0.0.11: {}
+  onedollarstats@0.0.12: {}
 
   oneline@1.0.4: {}
 
