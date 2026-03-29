@@ -75,8 +75,8 @@ importers:
         specifier: ^0.575.0
         version: 0.575.0(react@19.2.4)
       onedollarstats:
-        specifier: ^0.0.16
-        version: 0.0.16
+        specifier: ^0.0.17
+        version: 0.0.17
       radix-ui:
         specifier: ^1.4.3
         version: 1.4.3(@types/react-dom@19.2.3(@types/react@19.2.14))(@types/react@19.2.14)(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
@@ -6262,8 +6262,8 @@ packages:
   once@1.4.0:
     resolution: {integrity: sha512-lNaJgI+2Q5URQBkccEKHTQOPaXdUxnZZElQTZY0MFUAuaEqe1E+Nyvgdz/aIyNi6Z9MzO5dv1H8n58/GELp3+w==}
 
-  onedollarstats@0.0.16:
-    resolution: {integrity: sha512-nv1zZYIiVXW0me4fiFUB6VL0WByJSMMnP2wo/UjYDdihUTBq7PPeWwdpwwoAxG4dIqFYIhFbPX+pS2qIIlHOaw==}
+  onedollarstats@0.0.17:
+    resolution: {integrity: sha512-A2DYWgXVyfuHsRA7gmZoVBQG8GyK0Eivlb7SsW+F6vbLft5o3ifpENKyGds75kYQVhPw5yQ4gRYaOXz61aRIZQ==}
 
   oneline@2.0.0:
     resolution: {integrity: sha512-kA9pfu5nYoFnmp5KSo+ROicnI1XaIIaOYXKSy7+02IGavKxv7BRkEk3JEKQW5vPkozE9fejy1Z+6Jl67UaeC3g==}
@@ -15244,7 +15244,7 @@ snapshots:
     dependencies:
       wrappy: 1.0.2
 
-  onedollarstats@0.0.16: {}
+  onedollarstats@0.0.17: {}
 
   oneline@2.0.0: {}
 
