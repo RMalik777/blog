@@ -38,7 +38,7 @@
 		"radix-ui": "^1.6.2",
 		"react": "^19.2.7",
 		"react-dom": "^19.2.7",
-		"sanity": "^5.31.1"
+		"sanity": "^6.6.0"
 	},
 	"devDependencies": {
 		"@eslint/js": "^10.0.1",
