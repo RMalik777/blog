@@ -13,12 +13,17 @@ export const ui = {
 		"site.description": "Photos and notes from places I've been.",
 		"nav.home": "Home",
 		"nav.language": "Language",
+		"nav.posts": "Posts",
 		"theme.toggle": "Change color theme",
 		"theme.light": "Light theme",
 		"theme.dark": "Dark theme",
 		"theme.system": "System theme",
 		"posts.empty": "No posts yet.",
 		"posts.emptyLink": "",
+		"posts.earlier": "Earlier",
+		"posts.all": "All posts",
+		"posts.allCount": "All {count} posts",
+		"posts.archiveDescription": "Every post, newest first.",
 		"post.back": "All posts",
 		"post.gallery": "Gallery",
 		"post.translation": "Baca dalam Bahasa Indonesia",
@@ -33,12 +38,17 @@ export const ui = {
 		"site.description": "Foto dan catatan dari tempat yang pernah saya kunjungi.",
 		"nav.home": "Beranda",
 		"nav.language": "Bahasa",
+		"nav.posts": "Tulisan",
 		"theme.toggle": "Ganti tema warna",
 		"theme.light": "Tema terang",
 		"theme.dark": "Tema gelap",
 		"theme.system": "Tema sistem",
 		"posts.empty": "Belum ada tulisan dalam Bahasa Indonesia.",
 		"posts.emptyLink": "Baca tulisan dalam bahasa Inggris",
+		"posts.earlier": "Sebelumnya",
+		"posts.all": "Semua tulisan",
+		"posts.allCount": "Semua {count} tulisan",
+		"posts.archiveDescription": "Semua tulisan, dari yang terbaru.",
 		"post.back": "Semua tulisan",
 		"post.gallery": "Galeri",
 		"post.translation": "Read in English",
@@ -54,6 +64,14 @@ export function useTranslations(lang: Lang) {
 	return function t(key: keyof (typeof ui)["en"]) {
 		return ui[lang][key] || ui[defaultLang][key];
 	};
+}
+
+/** Day and month only, for lists that are already grouped by year */
+export function formatDayMonth(date: string, lang: Lang) {
+	return new Date(date).toLocaleDateString(lang === "id" ? "id-ID" : "en-GB", {
+		day: "numeric",
+		month: "short",
+	});
 }
 
 export function formatDate(date: string, lang: Lang) {

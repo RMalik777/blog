@@ -2,6 +2,8 @@
 import { getRelativeLocaleUrl } from "astro:i18n";
 import LanguageSwitch from "@/components/LanguageSwitch.astro";
 import ThemeToggle from "@/components/ThemeToggle.astro";
+import { buttonVariants } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
 import { useTranslations, type Lang } from "@/i18n/ui";
 
 interface Props {
@@ -11,6 +13,7 @@ interface Props {
 
 const { lang, alternates } = Astro.props;
 const t = useTranslations(lang);
+const isPosts = Astro.url.pathname.replace(/\/$/, "") === getRelativeLocaleUrl(lang, "posts").replace(/\/$/, "");
 ---
 
 <header class="container-page flex items-center justify-between py-4 sm:py-6">
@@ -21,6 +24,17 @@ const t = useTranslations(lang);
 		{t("site.title")}
 	</a>
 	<div class="-mr-2 flex items-center gap-1">
+		<a
+			href={getRelativeLocaleUrl(lang, "posts")}
+			aria-current={isPosts ? "page" : undefined}
+			class={cn(
+				buttonVariants({ variant: "ghost", size: "sm" }),
+				"text-muted-foreground aria-[current=page]:text-foreground",
+			)}
+		>
+			{t("nav.posts")}
+		</a>
+		<span class="mx-1 h-4 w-px bg-border" aria-hidden="true"></span>
 		<LanguageSwitch lang={lang} alternates={alternates} />
 		<ThemeToggle lang={lang} />
 	</div>

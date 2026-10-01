@@ -27,6 +27,23 @@ export const POSTS_INDEX_QUERY = defineQuery(`
 	}
 `);
 
+export const POSTS_ARCHIVE_QUERY = defineQuery(`
+	*[_type == "post" && language == $language && defined(slug.current)]
+	| order(coalesce(publishedAt, _createdAt) desc) {
+		_id,
+		title,
+		location,
+		"slug": slug.current,
+		"date": coalesce(publishedAt, _createdAt),
+		thumbnail {
+			alt,
+			crop,
+			hotspot,
+			asset->{ _id, metadata { lqip, dimensions { width, height } } }
+		}
+	}
+`);
+
 export const POST_SLUGS_QUERY = defineQuery(`
 	*[_type == "post" && language == $language && defined(slug.current)].slug.current
 `);
@@ -62,6 +79,10 @@ export const POST_DETAIL_QUERY = defineQuery(`
 
 export function getPosts(language: Lang) {
 	return sanityClient.fetch(POSTS_INDEX_QUERY, { language });
+}
+
+export function getArchive(language: Lang) {
+	return sanityClient.fetch(POSTS_ARCHIVE_QUERY, { language });
 }
 
 export function getPostSlugs(language: Lang) {

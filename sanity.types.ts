@@ -286,6 +286,32 @@ export type POSTS_INDEX_QUERY_RESULT = Array<{
 }>;
 
 // Source: src/lib/sanity.ts
+// Variable: POSTS_ARCHIVE_QUERY
+// Query: *[_type == "post" && language == $language && defined(slug.current)]	| order(coalesce(publishedAt, _createdAt) desc) {		_id,		title,		location,		"slug": slug.current,		"date": coalesce(publishedAt, _createdAt),		thumbnail {			alt,			crop,			hotspot,			asset->{ _id, metadata { lqip, dimensions { width, height } } }		}	}
+export type POSTS_ARCHIVE_QUERY_RESULT = Array<{
+	_id: string;
+	title: string;
+	location: string | null;
+	slug: string;
+	date: string;
+	thumbnail: {
+		alt: string | null;
+		crop: SanityImageCrop | null;
+		hotspot: SanityImageHotspot | null;
+		asset: {
+			_id: string;
+			metadata: {
+				lqip: string | null;
+				dimensions: {
+					width: number;
+					height: number;
+				} | null;
+			} | null;
+		} | null;
+	} | null;
+}>;
+
+// Source: src/lib/sanity.ts
 // Variable: POST_SLUGS_QUERY
 // Query: *[_type == "post" && language == $language && defined(slug.current)].slug.current
 export type POST_SLUGS_QUERY_RESULT = Array<string>;
@@ -344,6 +370,7 @@ export type POST_DETAIL_QUERY_RESULT = {
 declare global {
 	interface SanityQueries {
 		'\n\t*[_type == "post" && language == $language && defined(slug.current)]\n\t| order(coalesce(publishedAt, _createdAt) desc) {\n\t\t_id,\n\t\ttitle,\n\t\tlocation,\n\t\texcerpt,\n\t\t"slug": slug.current,\n\t\t"date": coalesce(publishedAt, _createdAt),\n\t\tthumbnail {\n\t\t\talt,\n\t\t\tcrop,\n\t\t\thotspot,\n\t\t\tasset->{ _id, metadata { lqip, dimensions { width, height } } }\n\t\t},\n\t\t"gallery": gallery[0...4] {\n\t\t\t_key,\n\t\t\talt,\n\t\t\tcrop,\n\t\t\thotspot,\n\t\t\tasset->{ _id, metadata { lqip, dimensions { width, height } } }\n\t\t}\n\t}\n': POSTS_INDEX_QUERY_RESULT;
+		'\n\t*[_type == "post" && language == $language && defined(slug.current)]\n\t| order(coalesce(publishedAt, _createdAt) desc) {\n\t\t_id,\n\t\ttitle,\n\t\tlocation,\n\t\t"slug": slug.current,\n\t\t"date": coalesce(publishedAt, _createdAt),\n\t\tthumbnail {\n\t\t\talt,\n\t\t\tcrop,\n\t\t\thotspot,\n\t\t\tasset->{ _id, metadata { lqip, dimensions { width, height } } }\n\t\t}\n\t}\n': POSTS_ARCHIVE_QUERY_RESULT;
 		'\n\t*[_type == "post" && language == $language && defined(slug.current)].slug.current\n': POST_SLUGS_QUERY_RESULT;
 		'\n\t*[_type == "post" && language == $language && slug.current == $slug][0] {\n\t\t_id,\n\t\t_updatedAt,\n\t\ttitle,\n\t\tlocation,\n\t\texcerpt,\n\t\tbody,\n\t\t"slug": slug.current,\n\t\t"date": coalesce(publishedAt, _createdAt),\n\t\tthumbnail {\n\t\t\talt,\n\t\t\tcrop,\n\t\t\thotspot,\n\t\t\tasset->{ _id, metadata { lqip, dimensions { width, height } } }\n\t\t},\n\t\tgallery[] {\n\t\t\t_key,\n\t\t\talt,\n\t\t\tcaption,\n\t\t\tcrop,\n\t\t\thotspot,\n\t\t\tasset->{ _id, metadata { lqip, dimensions { width, height } } }\n\t\t},\n\t\t"translations": *[_type == "translation.metadata" && references(^._id)][0]\n\t\t\t.translations[language != $language].value->{ language, "slug": slug.current }\n\t}\n': POST_DETAIL_QUERY_RESULT;
 	}

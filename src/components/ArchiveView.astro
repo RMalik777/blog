@@ -1,0 +1,106 @@
+---
+import { getRelativeLocaleUrl } from "astro:i18n";
+import Layout from "@/layouts/Layout.astro";
+import SanityImage from "@/components/SanityImage.astro";
+import { getArchive } from "@/lib/sanity";
+import { formatDayMonth, useTranslations, type Lang } from "@/i18n/ui";
+
+interface Props {
+	lang: Lang;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+const posts = await getArchive(lang);
+
+// Posts arrive newest first, so years come out in descending order
+const years = new Map<number, typeof posts>();
+for (const post of posts) {
+	const year = new Date(post.date).getFullYear();
+	years.set(year, [...(years.get(year) ?? []), post]);
+}
+---
+
+<Layout
+	title={t("posts.all")}
+	description={t("posts.archiveDescription")}
+	lang={lang}
+	alternates={{ en: getRelativeLocaleUrl("en", "posts"), id: getRelativeLocaleUrl("id", "posts") }}
+>
+	<div class="container-page">
+		<h1 class="pt-10 pb-12 font-serif text-[2.75rem] leading-[1.05] font-light tracking-[-0.02em] sm:pt-16 sm:pb-16 sm:text-[4.5rem]">
+			{t("posts.all")}
+		</h1>
+
+		{posts.length > 0 ? (
+			<div class="grid gap-12 sm:gap-16">
+				{[...years].map(([year, items]) => (
+					<section class="grid gap-3 border-t pt-4 sm:grid-cols-[8rem_minmax(0,1fr)] sm:gap-8">
+						<h2 class="font-serif text-2xl font-light text-muted-foreground tabular-nums sm:sticky sm:top-6 sm:self-start">
+							{year}
+						</h2>
+						<ol class="grid">
+							{items.map((post) => {
+								const href = getRelativeLocaleUrl(lang, `post/${post.slug}`);
+								return (
+									<li class="border-b last:border-b-0">
+										<a
+											href={href}
+											class="group grid grid-cols-[6rem_minmax(0,1fr)] items-center gap-4 py-4 sm:grid-cols-[8rem_minmax(0,1fr)_auto] sm:gap-6"
+										>
+											{post.thumbnail?.asset ? (
+												<div transition:name={`cover-${post._id}`}>
+													<SanityImage
+														image={post.thumbnail}
+														alt=""
+														aspectRatio={3 / 2}
+														widths={[240, 480]}
+														sizes="(min-width: 40rem) 8rem, 6rem"
+														loading="lazy"
+														class="aspect-3/2 w-full object-cover"
+													/>
+												</div>
+											) : (
+												<div class="photo aspect-3/2" />
+											)}
+											<div class="grid gap-1">
+												<span class="font-serif text-xl leading-snug decoration-primary/50 underline-offset-[0.15em] group-hover:underline sm:text-2xl">
+													{post.title}
+												</span>
+												<span class="flex flex-wrap gap-x-4 font-sans text-sm text-muted-foreground">
+													{post.location && <span>{post.location}</span>}
+													<time datetime={post.date} class="sm:hidden">
+														{formatDayMonth(post.date, lang)}
+													</time>
+												</span>
+											</div>
+											<time
+												datetime={post.date}
+												class="hidden font-sans text-sm text-muted-foreground tabular-nums sm:block"
+											>
+												{formatDayMonth(post.date, lang)}
+											</time>
+										</a>
+									</li>
+								);
+							})}
+						</ol>
+					</section>
+				))}
+			</div>
+		) : (
+			<div class="grid max-w-[60ch] gap-3 border-t pt-8">
+				<p class="font-serif text-xl">{t("posts.empty")}</p>
+				{lang !== "en" && (
+					<a
+						href={getRelativeLocaleUrl("en", "posts")}
+						hreflang="en"
+						class="w-fit font-sans text-sm text-primary underline underline-offset-4"
+					>
+						{t("posts.emptyLink")}
+					</a>
+				)}
+			</div>
+		)}
+	</div>
+</Layout>

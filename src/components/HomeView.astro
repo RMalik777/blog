@@ -2,6 +2,7 @@
 import { getRelativeLocaleUrl } from "astro:i18n";
 import Layout from "@/layouts/Layout.astro";
 import PostCard from "@/components/PostCard.astro";
+import PostTile from "@/components/PostTile.astro";
 import { getPosts } from "@/lib/sanity";
 import { useTranslations, type Lang } from "@/i18n/ui";
 
@@ -12,6 +13,11 @@ interface Props {
 const { lang } = Astro.props;
 const t = useTranslations(lang);
 const posts = await getPosts(lang);
+
+// The home page shows the latest post in full and a few earlier ones; the rest live on /posts
+const EARLIER_COUNT = 4;
+const [latest, ...rest] = posts;
+const earlier = rest.slice(0, EARLIER_COUNT);
 ---
 
 <Layout lang={lang} alternates={{ en: getRelativeLocaleUrl("en"), id: getRelativeLocaleUrl("id") }}>
@@ -20,14 +26,32 @@ const posts = await getPosts(lang);
 			{t("site.description")}
 		</h1>
 
-		{posts.length > 0 ? (
-			<ol class="grid gap-20 sm:gap-28">
-				{posts.map((post, index) => (
-					<li>
-						<PostCard post={post} lang={lang} priority={index === 0} />
-					</li>
-				))}
-			</ol>
+		{latest ? (
+			<div class="grid gap-20 sm:gap-28">
+				<PostCard post={latest} lang={lang} priority />
+				{earlier.length > 0 && (
+					<section class="grid gap-8 border-t pt-4 sm:gap-10" aria-labelledby="earlier-heading">
+						<div class="flex items-baseline justify-between gap-4">
+							<h2 id="earlier-heading" class="font-serif text-2xl font-light text-muted-foreground">
+								{t("posts.earlier")}
+							</h2>
+							<a
+								href={getRelativeLocaleUrl(lang, "posts")}
+								class="font-sans text-sm text-muted-foreground underline decoration-border underline-offset-4 transition-colors hover:text-foreground hover:decoration-current"
+							>
+								{t("posts.allCount").replace("{count}", String(posts.length))}
+							</a>
+						</div>
+						<ul class="grid gap-x-8 gap-y-14 sm:grid-cols-2">
+							{earlier.map((post) => (
+								<li>
+									<PostTile post={post} lang={lang} />
+								</li>
+							))}
+						</ul>
+					</section>
+				)}
+			</div>
 		) : (
 			<div class="grid max-w-[60ch] gap-3 border-t pt-8">
 				<p class="font-serif text-xl">{t("posts.empty")}</p>
