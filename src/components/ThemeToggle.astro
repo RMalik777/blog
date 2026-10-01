@@ -1,0 +1,50 @@
+---
+import { Monitor, Moon, Sun } from "lucide-react";
+import { buttonVariants } from "@/components/ui/button";
+import { useTranslations, type Lang } from "@/i18n/ui";
+
+interface Props {
+	lang: Lang;
+}
+
+const t = useTranslations(Astro.props.lang);
+---
+
+<button
+	type="button"
+	class={buttonVariants({ variant: "ghost", size: "icon" })}
+	aria-label={t("theme.toggle")}
+	data-theme-toggle
+	data-label-light={t("theme.light")}
+	data-label-dark={t("theme.dark")}
+	data-label-system={t("theme.system")}
+>
+	<Sun data-icon-light aria-hidden="true" />
+	<Moon data-icon-dark aria-hidden="true" />
+	<Monitor data-icon-system aria-hidden="true" />
+</button>
+
+<script>
+	const order = ["light", "dark", "system"] as const;
+	type Pref = (typeof order)[number];
+
+	function currentPref(): Pref {
+		const pref = document.documentElement.dataset.themePref;
+		return pref === "light" || pref === "dark" ? pref : "system";
+	}
+
+	// Delegated so it keeps working after ClientRouter swaps the header
+	document.addEventListener("click", (event) => {
+		const button = (event.target as Element | null)?.closest<HTMLButtonElement>("[data-theme-toggle]");
+		if (!button) return;
+		const next = order[(order.indexOf(currentPref()) + 1) % order.length];
+		try {
+			if (next === "system") localStorage.removeItem("theme");
+			else localStorage.setItem("theme", next);
+		} catch {
+			// Storage can be unavailable (private mode); the theme still applies for this page
+		}
+		window.applyTheme?.(next);
+		button.title = button.dataset[`label${next[0].toUpperCase()}${next.slice(1)}`] ?? "";
+	});
+</script>

@@ -1,0 +1,38 @@
+---
+import { getRelativeLocaleUrl } from "astro:i18n";
+import { buttonVariants } from "@/components/ui/button";
+import { languages, useTranslations, type Lang } from "@/i18n/ui";
+import { cn } from "@/lib/utils";
+
+interface Props {
+	lang: Lang;
+	/** Localized URL of the current page, when a translation exists */
+	alternates?: Partial<Record<Lang, string>>;
+}
+
+const { lang, alternates = {} } = Astro.props;
+const t = useTranslations(lang);
+const locales = Object.keys(languages) as Lang[];
+---
+
+<nav aria-label={t("nav.language")}>
+	<ul class="flex items-center">
+		{locales.map((locale) => (
+			<li>
+				<a
+					href={alternates[locale] ?? getRelativeLocaleUrl(locale)}
+					hreflang={locale}
+					lang={locale}
+					title={languages[locale]}
+					aria-current={locale === lang ? "page" : undefined}
+					class={cn(
+						buttonVariants({ variant: "ghost", size: "sm" }),
+						"text-muted-foreground aria-[current=page]:text-foreground",
+					)}
+				>
+					{locale.toUpperCase()}
+				</a>
+			</li>
+		))}
+	</ul>
+</nav>

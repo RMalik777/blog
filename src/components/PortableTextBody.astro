@@ -1,0 +1,25 @@
+---
+import { PortableText } from "astro-portabletext";
+import type { TypedObject } from "astro-portabletext/types";
+import Link from "@/components/portable-text/Link.astro";
+import { cn } from "@/lib/utils";
+
+interface Props {
+	value: TypedObject[] | null | undefined;
+	class?: string;
+}
+
+const { value, class: className } = Astro.props;
+
+const components = {
+	mark: {
+		link: Link,
+	},
+};
+---
+
+{value?.length ? (
+	<div class={cn("prose-body", className)}>
+		<PortableText value={value} components={components} />
+	</div>
+) : null}

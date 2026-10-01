@@ -1,0 +1,64 @@
+---
+import { getRelativeLocaleUrl } from "astro:i18n";
+import SanityImage from "@/components/SanityImage.astro";
+import { formatDate, type Lang } from "@/i18n/ui";
+import type { POSTS_INDEX_QUERY_RESULT } from "../../sanity.types";
+
+interface Props {
+	post: POSTS_INDEX_QUERY_RESULT[number];
+	lang: Lang;
+	/** The first post on the page loads its cover eagerly */
+	priority?: boolean;
+}
+
+const { post, lang, priority = false } = Astro.props;
+const href = getRelativeLocaleUrl(lang, `post/${post.slug}`);
+const frames = post.gallery?.filter((frame) => frame.asset) ?? [];
+---
+
+<article class="grid gap-5 sm:gap-6">
+	{post.thumbnail?.asset && (
+		<a href={href} tabindex="-1" aria-hidden="true" class="block" transition:name={`cover-${post._id}`}>
+			<SanityImage
+				image={post.thumbnail}
+				alt=""
+				aspectRatio={3 / 2}
+				sizes="(min-width: 72rem) 68rem, calc(100vw - 2rem)"
+				loading={priority ? "eager" : "lazy"}
+				fetchpriority={priority ? "high" : "auto"}
+				class="aspect-3/2 w-full object-cover"
+			/>
+		</a>
+	)}
+	<div class="grid gap-6 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-end lg:gap-12">
+		<div class="grid max-w-[60ch] gap-3">
+			<h2 class="font-serif text-[2rem] leading-[1.1] font-normal tracking-tight sm:text-[2.75rem]">
+				<a href={href} class="decoration-primary/50 underline-offset-[0.15em] hover:underline">
+					{post.title}
+				</a>
+			</h2>
+			<p class="flex flex-wrap gap-x-4 gap-y-1 font-sans text-sm text-muted-foreground">
+				{post.location && <span>{post.location}</span>}
+				<time datetime={post.date}>{formatDate(post.date, lang)}</time>
+			</p>
+			{post.excerpt && <p class="line-clamp-3 font-serif text-lg leading-relaxed sm:text-xl">{post.excerpt}</p>}
+		</div>
+		{frames.length > 0 && (
+			<ul class="grid grid-cols-4 gap-1.5 sm:max-w-md lg:w-80" aria-hidden="true">
+				{frames.map((frame) => (
+					<li>
+						<SanityImage
+							image={frame}
+							alt=""
+							aspectRatio={1}
+							widths={[160, 320]}
+							sizes="(min-width: 64rem) 5rem, 25vw"
+							loading="lazy"
+							class="aspect-square w-full object-cover"
+						/>
+					</li>
+				))}
+			</ul>
+		)}
+	</div>
+</article>

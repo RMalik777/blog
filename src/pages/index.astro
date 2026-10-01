@@ -1,14 +1,5 @@
 ---
-import Card from "../components/Card.astro";
-import Welcome from "../components/Welcome.astro";
-import Layout from "../layouts/Layout.astro";
-import { getPosts } from "../utils/sanity";
-
-const posts = await getPosts("en");
+import HomeView from "@/components/HomeView.astro";
 ---
 
-<Layout title="Blog | Rafli Malik" desc="Rafli Malik personal blog">
-	<section class="h-fit min-h-dvh">
-		{posts?.length ? posts.map((post) => <Card post={post} />) : <Welcome />}
-	</section>
-</Layout>
+<HomeView lang="en" />

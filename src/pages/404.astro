@@ -1,15 +1,22 @@
 ---
-import { buttonVariants } from "@/components/ui/button";
+import { getRelativeLocaleUrl } from "astro:i18n";
 import Layout from "@/layouts/Layout.astro";
+import { useTranslations } from "@/i18n/ui";
+
+const t = useTranslations("en");
 ---
 
-<Layout title="Page Not Found" desc="404 error, page not found">
-	<main class="-mt-14 flex min-h-dvh flex-col items-start justify-center gap-4">
-		<h1
-			class="xs:bg-gradient-to-r xs:py-4 bg-linear-to-b from-indigo-500 to-fuchsia-500 bg-clip-text py-1 text-5xl leading-none font-medium tracking-tighter text-transparent duration-200 ease-out lg:text-6xl"
-		>
-			<span class="font-mono font-semibold tracking-normal">404|</span><wbr />Page Not Found
+<Layout title={t("notFound.title")} description={t("notFound.body")}>
+	<div class="container-page grid gap-6 pt-16 pb-8 sm:pt-28">
+		<h1 class="max-w-[14ch] font-serif text-[2.75rem] leading-[1.05] font-light tracking-[-0.02em] sm:text-[4.75rem]">
+			{t("notFound.title")}
 		</h1>
-		<a class={buttonVariants({ variant: "outline" })} href="/">Go Back Home</a>
-	</main>
+		<p class="max-w-[48ch] font-serif text-xl">{t("notFound.body")}</p>
+		<a
+			href={getRelativeLocaleUrl("en")}
+			class="w-fit font-sans text-sm text-primary underline decoration-primary/40 underline-offset-4 hover:decoration-primary"
+		>
+			{t("notFound.home")}
+		</a>
+	</div>
 </Layout>

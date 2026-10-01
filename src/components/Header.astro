@@ -1,15 +1,27 @@
 ---
-import { DarkMode } from "@/components/DarkModeToggle";
+import { getRelativeLocaleUrl } from "astro:i18n";
+import LanguageSwitch from "@/components/LanguageSwitch.astro";
+import ThemeToggle from "@/components/ThemeToggle.astro";
+import { useTranslations, type Lang } from "@/i18n/ui";
+
+interface Props {
+	lang: Lang;
+	alternates?: Partial<Record<Lang, string>>;
+}
+
+const { lang, alternates } = Astro.props;
+const t = useTranslations(lang);
 ---
 
-<header class="z-50 flex w-full items-center justify-between py-2 pb-4">
-	<nav>
-		<a
-			href="/"
-			class="group relative text-2xl font-semibold tracking-tighter text-neutral-700 duration-300 ease-out hover:text-black dark:text-neutral-300 hover:dark:text-white"
-		>
-			Rafli Malik
-		</a>
-	</nav>
-	<DarkMode client:load />
+<header class="container-page flex items-center justify-between py-4 sm:py-6">
+	<a
+		href={getRelativeLocaleUrl(lang)}
+		class="font-sans text-[0.9375rem] font-medium tracking-tight transition-colors hover:text-primary"
+	>
+		{t("site.title")}
+	</a>
+	<div class="-mr-2 flex items-center gap-1">
+		<LanguageSwitch lang={lang} alternates={alternates} />
+		<ThemeToggle lang={lang} />
+	</div>
 </header>

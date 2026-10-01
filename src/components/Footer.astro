@@ -1,146 +1,53 @@
 ---
-import { Image } from "astro:assets";
-import AstroLogo from "@/assets/astro-logo-light-gradient.svg";
-import SanityLogo from "@/assets/sanity-logotype--white-on-black.svg";
-import { SquareArrowOutUpRight } from "lucide-react";
+import { useTranslations, type Lang } from "@/i18n/ui";
 
-const backLink = [
-	{
-		title: "Explore",
-		children: [
-			{
-				title: "Home",
-				href: "/",
-			},
-			{
-				title: "About",
-				href: "/about",
-			},
-		],
-	},
-	{
-		title: "Social",
-		children: [
-			{
-				title: "GitHub",
-				href: "https://github.com/RMalik777",
-			},
-			{
-				title: "LinkedIn",
-				href: "https://www.linkedin.com/in/raflimalik/",
-			},
-			{
-				title: "Instagram",
-				href: "https://www.instagram.com/raflimalik__/",
-			},
-			{
-				title: "Unsplash",
-				href: "https://unsplash.com/@raflimalik",
-			},
-		],
-	},
-	{
-		title: "Contact",
-		children: [
-			{
-				title: "Email",
-				href: "mailto:Rafli.Malik@gmail.com",
-			},
-			{
-				title: "Discord",
-				href: "https://discord.com/users/432877551640117249",
-			},
-		],
-	},
+interface Props {
+	lang: Lang;
+}
+
+const t = useTranslations(Astro.props.lang);
+
+const links = [
+	{ title: "GitHub", href: "https://github.com/RMalik777" },
+	{ title: "LinkedIn", href: "https://www.linkedin.com/in/raflimalik/" },
+	{ title: "Instagram", href: "https://www.instagram.com/raflimalik__/" },
+	{ title: "Unsplash", href: "https://unsplash.com/@raflimalik" },
+	{ title: "Email", href: "mailto:rafli.malik@gmail.com" },
 ];
+
+const linkClass =
+	"underline decoration-border underline-offset-4 transition-colors hover:text-foreground hover:decoration-current";
 ---
 
-<footer
-	class="flex w-full flex-col items-center justify-center border-neutral-700 bg-neutral-950 text-neutral-50 dark:border-t-2"
->
-	<div
-		class="xs:flex-row xs:items-center xs:px-6 xs:py-8 flex w-full flex-col items-start justify-between px-4 py-6 sm:px-8 sm:py-8 md:py-10 lg:py-12"
-	>
-		<div class="flex flex-col items-start justify-start gap-2 sm:flex-row sm:gap-8 lg:gap-16">
-			{
-				backLink.map((link) => (
-					<div class="flex flex-col items-start gap-1">
-						<p class="text-xl font-medium tracking-tight">{link.title}</p>
-						<ul>
-							{link.children.map((child) => (
-								<li>
-									<a
-										href={child.href}
-										class="tracking-tight text-purple-400 duration-150 ease-out hover:text-purple-500 hover:underline"
-									>
-										{child.title}
-									</a>
-								</li>
-							))}
-						</ul>
-					</div>
-				))
-			}
-		</div>
-		<a
-			class="xs:block hidden text-xl font-medium tracking-tighter text-purple-400 duration-150 ease-out hover:text-purple-500 hover:underline lg:text-2xl"
-			href="http://raflimalik.com"
-			target="_blank">Rafli Malik | 2024</a
-		>
-	</div>
-	<div class="xs:px-6 flex w-full flex-col items-start gap-1 px-4 text-left text-xs tracking-tight sm:px-8">
-		<a
-			class="xs:hidden block text-sm tracking-tighter text-purple-400 duration-150 ease-out hover:text-purple-500 hover:underline"
-			href="http://raflimalik.com"
-			target="_blank">Rafli Malik | 2024</a
-		>
-		<div class="w-full border-b-[2px] border-neutral-500"></div>
-		<p class="w-full">
-			This website is licensed under
-			<a
-				class="text-purple-400 duration-150 ease-out hover:text-purple-500 hover:underline"
-				href="https://creativecommons.org/licenses/by/4.0/"
-				target="_blank"
-				rel="noopener noreferrer"
-			>
-				Creative Commons Attribution 4.0 International
-				<SquareArrowOutUpRight className="inline-block align-middle" size={14} />
-			</a>
-			license
-		</p>
-		<p class="w-full">
-			The source code for this website is available on
-			<a
-				class="text-purple-400 duration-150 ease-out hover:text-purple-500 hover:underline"
-				href="https://github.com/RMalik777/blog"
-				target="_blank"
-				rel="noopener noreferrer"
-			>
-				GitHub
-				<SquareArrowOutUpRight className="inline-block align-middle" size={14} />
-			</a>
-			under the
-			<a
-				class="text-purple-400 duration-150 ease-out hover:text-purple-500 hover:underline"
-				href="https://github.com/RMalik777/blog/blob/main/LICENSE-CODE"
-				target="_blank"
-				rel="noopener noreferrer"
-			>
-				MIT LICENSE
-				<SquareArrowOutUpRight className="inline-block align-middle" size={14} />
-			</a>
-		</p>
-	</div>
-	<div class="xs:flex-row flex w-full flex-col items-center justify-center gap-1 bg-black p-2 py-4 text-white">
-		<p>Built with</p>
-		<div class="xs:w-fit xs:flex-nowrap flex w-full flex-row flex-wrap items-center justify-center">
-			<a href="https://astro.build" target="_blank" rel="noopener noreferrer">
-				<Image src={AstroLogo} alt="Astro Logo" class="xs:h-12 h-8 w-auto min-w-min" />
-			</a>
-			<p class="xs:block hidden">+</p>
-			<a href="https://sanity.io" target="_blank" rel="noopener noreferrer">
-				<Image src={SanityLogo} alt="Astro Logo" class="xs:h-10 h-6 w-auto min-w-min" />
-			</a>
+<footer class="container-page mt-24 pb-10 font-sans text-sm text-muted-foreground sm:mt-36">
+	<div class="flex flex-col gap-6 border-t pt-6 sm:flex-row sm:items-start sm:justify-between">
+		<ul class="flex flex-wrap gap-x-5 gap-y-2">
+			{links.map((link) => (
+				<li>
+					<a href={link.href} class="transition-colors hover:text-foreground">
+						{link.title}
+					</a>
+				</li>
+			))}
+		</ul>
+		<div class="flex flex-col gap-1 sm:max-w-sm sm:text-right">
+			<p>
+				<a href="https://raflimalik.com" class="text-foreground transition-colors hover:text-primary">
+					Rafli Malik
+				</a>
+				, {new Date().getFullYear()}
+			</p>
+			<p>
+				{t("footer.license.content")}{" "}
+				<a href="https://creativecommons.org/licenses/by/4.0/" rel="license noopener" class={linkClass}>
+					CC BY 4.0
+				</a>
+				. {t("footer.license.code")}{" "}
+				<a href="https://github.com/RMalik777/blog" rel="noopener" class={linkClass}>
+					MIT
+				</a>
+				.
+			</p>
 		</div>
 	</div>
 </footer>

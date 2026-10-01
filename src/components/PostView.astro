@@ -1,0 +1,140 @@
+---
+import { getRelativeLocaleUrl } from "astro:i18n";
+import Layout from "@/layouts/Layout.astro";
+import PortableTextBody from "@/components/PortableTextBody.astro";
+import SanityImage from "@/components/SanityImage.astro";
+import { formatDate, useTranslations, type Lang } from "@/i18n/ui";
+import { urlFor } from "@/lib/image";
+import type { POST_DETAIL_QUERY_RESULT } from "../../sanity.types";
+
+interface Props {
+	post: NonNullable<POST_DETAIL_QUERY_RESULT>;
+	lang: Lang;
+}
+
+const { post, lang } = Astro.props;
+const t = useTranslations(lang);
+
+const translation = post.translations?.find((item) => item?.language && item.language !== lang && item.slug);
+const alternates: Partial<Record<Lang, string>> = {
+	[lang]: getRelativeLocaleUrl(lang, `post/${post.slug}`),
+};
+if (translation) {
+	alternates[translation.language as Lang] = getRelativeLocaleUrl(
+		translation.language as Lang,
+		`post/${translation.slug}`,
+	);
+}
+
+const cover = post.thumbnail?.asset ? post.thumbnail : null;
+const socialImage = cover
+	? urlFor({ ...cover, asset: { _ref: cover.asset!._id } })
+			.width(1200)
+			.height(630)
+			.url()
+	: undefined;
+const gallery = post.gallery?.filter((photo) => photo.asset) ?? [];
+const canonical = new URL(alternates[lang]!, Astro.site).href;
+
+const jsonLd = {
+	"@context": "https://schema.org",
+	"@type": "BlogPosting",
+	headline: post.title,
+	description: post.excerpt ?? undefined,
+	inLanguage: lang,
+	datePublished: post.date,
+	dateModified: post._updatedAt,
+	image: socialImage,
+	url: canonical,
+	mainEntityOfPage: canonical,
+	contentLocation: post.location ? { "@type": "Place", name: post.location } : undefined,
+	author: { "@type": "Person", name: "Rafli Malik", url: "https://raflimalik.com" },
+};
+---
+
+<Layout
+	title={post.title}
+	description={post.excerpt ?? undefined}
+	lang={lang}
+	alternates={alternates}
+	image={socialImage}
+	type="article"
+>
+	<script slot="head" type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+	<article>
+		<header class="container-page grid gap-5 pt-6 pb-10 sm:pt-12 sm:pb-14">
+			<a
+				href={getRelativeLocaleUrl(lang)}
+				class="w-fit font-sans text-sm text-muted-foreground transition-colors hover:text-foreground"
+			>
+				{t("post.back")}
+			</a>
+			<h1 class="max-w-[18ch] font-serif text-[2.75rem] leading-[1.05] font-light tracking-[-0.02em] sm:text-[4.75rem]">
+				{post.title}
+			</h1>
+			<p class="flex flex-wrap gap-x-4 gap-y-1 font-sans text-sm text-muted-foreground">
+				{post.location && <span>{post.location}</span>}
+				<time datetime={post.date}>{formatDate(post.date, lang)}</time>
+			</p>
+		</header>
+
+		{cover && (
+			<div class="container-page" transition:name={`cover-${post._id}`}>
+				<SanityImage
+					image={cover}
+					aspectRatio={3 / 2}
+					sizes="(min-width: 72rem) 68rem, calc(100vw - 2rem)"
+					loading="eager"
+					fetchpriority="high"
+					class="aspect-3/2 w-full object-cover"
+				/>
+			</div>
+		)}
+
+		<div class="container-page grid gap-10 pt-10 sm:pt-14">
+			{post.excerpt && (
+				<p class="max-w-[60ch] font-serif text-[1.375rem] leading-snug sm:text-[1.75rem]">{post.excerpt}</p>
+			)}
+			<PortableTextBody value={post.body} />
+		</div>
+
+		{gallery.length > 0 && (
+			<section aria-labelledby="gallery-heading" class="container-page pt-16 sm:pt-24">
+				<h2 id="gallery-heading" class="sr-only">
+					{t("post.gallery")}
+				</h2>
+				<ul class="grid gap-6 sm:gap-10">
+					{gallery.map((photo) => (
+						<li>
+							<figure class="grid gap-3">
+								<SanityImage
+									image={photo}
+									sizes="(min-width: 72rem) 68rem, calc(100vw - 2rem)"
+									loading="lazy"
+									maxHeight="90svh"
+									class="h-auto"
+								/>
+								{photo.caption && (
+									<figcaption class="max-w-[60ch] font-sans text-sm text-muted-foreground">{photo.caption}</figcaption>
+								)}
+							</figure>
+						</li>
+					))}
+				</ul>
+			</section>
+		)}
+
+		{translation && (
+			<p class="container-page pt-16">
+				<a
+					href={alternates[translation.language as Lang]}
+					hreflang={translation.language}
+					lang={translation.language}
+					class="font-sans text-sm text-primary underline decoration-primary/40 underline-offset-4 hover:decoration-primary"
+				>
+					{t("post.translation")}
+				</a>
+			</p>
+		)}
+	</article>
+</Layout>

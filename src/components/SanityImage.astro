@@ -1,0 +1,84 @@
+---
+import type { HTMLAttributes } from "astro/types";
+import type { SanityImageCrop, SanityImageHotspot } from "../../sanity.types";
+import { IMAGE_WIDTHS, srcsetFor, urlFor } from "@/lib/image";
+import { cn } from "@/lib/utils";
+
+export interface SanityImageValue {
+	alt?: string | null;
+	crop?: SanityImageCrop | null;
+	hotspot?: SanityImageHotspot | null;
+	asset: {
+		_id: string;
+		metadata: {
+			lqip: string | null;
+			dimensions: { width: number; height: number } | null;
+		} | null;
+	} | null;
+}
+
+interface Props extends Omit<HTMLAttributes<"img">, "src" | "srcset" | "width" | "height" | "alt"> {
+	image: SanityImageValue;
+	/** Force a crop to this width/height ratio, e.g. 3 / 2. Uses the hotspot when set. */
+	aspectRatio?: number;
+	sizes: string;
+	widths?: number[];
+	/** Empty string marks the image as decorative. */
+	alt?: string;
+	/** Keep the whole photo within this height (e.g. "90svh") by narrowing it, preserving the aspect ratio. */
+	maxHeight?: string;
+}
+
+const {
+	image,
+	aspectRatio,
+	sizes,
+	widths = IMAGE_WIDTHS,
+	alt,
+	maxHeight,
+	class: className,
+	style,
+	...attrs
+} = Astro.props;
+
+const dimensions = image.asset?.metadata?.dimensions;
+const crop = image.crop;
+// Visible size after the editor's crop, so width/height match what is rendered
+const sourceWidth = dimensions ? dimensions.width * (1 - (crop?.left ?? 0) - (crop?.right ?? 0)) : 1600;
+const sourceHeight = dimensions ? dimensions.height * (1 - (crop?.top ?? 0) - (crop?.bottom ?? 0)) : 1067;
+const ratio = aspectRatio ?? sourceWidth / sourceHeight;
+
+// Never ask the CDN for more pixels than the original has
+const usableWidths = widths.filter((width) => width <= sourceWidth);
+if (usableWidths.length === 0) usableWidths.push(Math.round(sourceWidth));
+const largest = usableWidths.at(-1)!;
+
+const source = { ...image, asset: { _ref: image.asset?._id ?? "" } };
+const src = aspectRatio
+	? urlFor(source)
+			.width(largest)
+			.height(Math.round(largest / aspectRatio))
+			.url()
+	: urlFor(source).width(largest).url();
+const lqip = image.asset?.metadata?.lqip;
+const inlineStyle = [
+	lqip && `background-image: url(${lqip})`,
+	maxHeight && `width: min(100%, calc(${maxHeight} * ${ratio.toFixed(4)}))`,
+	style,
+]
+	.filter(Boolean)
+	.join(";");
+---
+
+<img
+	src={src}
+	srcset={srcsetFor(source, usableWidths, aspectRatio)}
+	sizes={sizes}
+	width={largest}
+	height={Math.round(largest / ratio)}
+	alt={alt ?? image.alt ?? ""}
+	decoding="async"
+	class={cn("photo", className)}
+	style={inlineStyle || undefined}
+	{...attrs}
+/>

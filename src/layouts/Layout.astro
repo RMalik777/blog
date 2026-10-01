@@ -1,100 +1,105 @@
 ---
 import { ClientRouter } from "astro:transitions";
-import "../styles/global.css";
-import "@fontsource-variable/inter/opsz.css";
-import "@fontsource/geist-mono";
-import "@fontsource-variable/lora";
+import { Font } from "astro:assets";
+import "@/styles/global.css";
 
 import Header from "@/components/Header.astro";
 import Footer from "@/components/Footer.astro";
+import { defaultLang, useTranslations, type Lang } from "@/i18n/ui";
+
 interface Props {
-	title: string;
-	desc: string;
+	title?: string;
+	description?: string;
+	lang?: Lang;
+	/** Localized URLs of this page, used for hreflang and the language switch */
+	alternates?: Partial<Record<Lang, string>>;
+	/** Absolute URL of the social preview image */
+	image?: string;
+	type?: "website" | "article";
 }
 
-const { title, desc } = Astro.props;
+const { title, description, lang = defaultLang, alternates, image, type = "website" } = Astro.props;
+const t = useTranslations(lang);
+
+const siteName = t("site.title");
+const pageTitle = title ? `${title} | ${siteName}` : siteName;
+const pageDescription = description || t("site.description");
+const canonical = new URL(Astro.url.pathname, Astro.site);
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang={lang} data-theme-pref="system">
 	<head>
 		<script is:inline>
-			const theme = window.localStorage.getItem("theme");
-			if (theme === "dark") {
-				document.documentElement.className = "dark";
-				document.documentElement.style.colorScheme = "dark";
-			} else if (theme === "light") {
-				document.documentElement.classList.remove("dark");
-				document.documentElement.style.colorScheme = "light";
-			} else {
-				if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
-					document.documentElement.className = "dark";
-					document.documentElement.style.colorScheme = "dark";
-				} else {
-					document.documentElement.classList.remove("dark");
-					document.documentElement.style.colorScheme = "light";
+			(function () {
+				const media = window.matchMedia("(prefers-color-scheme: dark)");
+				function readPref() {
+					try {
+						const stored = localStorage.getItem("theme");
+						return stored === "light" || stored === "dark" ? stored : "system";
+					} catch {
+						return "system";
+					}
 				}
-			}
+				window.applyTheme = function (pref) {
+					pref = pref || readPref();
+					const dark = pref === "dark" || (pref === "system" && media.matches);
+					document.documentElement.classList.toggle("dark", dark);
+					document.documentElement.dataset.themePref = pref;
+				};
+				window.applyTheme();
+				media.addEventListener("change", function () {
+					window.applyTheme();
+				});
+				// ClientRouter replaces <html> attributes on navigation, so re-apply the theme
+				document.addEventListener("astro:after-swap", function () {
+					window.applyTheme();
+				});
+			})();
 		</script>
 		<script>
 			import { configure } from "onedollarstats";
-			if (typeof window !== "undefined") {
-				configure({
-					trackLocalhostAs: "blog.raflimalik.com",
-				});
-			}
+			configure({
+				trackLocalhostAs: "blog.raflimalik.com",
+			});
 		</script>
 		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="generator" content={Astro.generator} />
-		<title>{title}</title>
-		<meta name="description" content={desc} />
 		<link rel="sitemap" href="/sitemap-index.xml" />
-		<meta name="theme-color" media="(prefers-color-scheme: light)" content="#c084fc" />
-		<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#581c87" />
-		<meta property="og:title" content="Rafli Malik Personal Blog" />
-		<meta property="og:description" content="Rafli Malik personal blog where he shares his thoughts and experiences." />
-		<meta property="og:url" content="https://wraflimalik.com/" />
-		<meta property="og:type" content="website" />
-		<meta property="og:site_name" content="Rafli Malik" />
+		<meta name="generator" content={Astro.generator} />
+		<Font cssVariable="--font-newsreader" preload />
+		<Font cssVariable="--font-geist" preload />
+
+		<title>{pageTitle}</title>
+		<meta name="description" content={pageDescription} />
+		<link rel="canonical" href={canonical} />
+		{alternates &&
+			Object.entries(alternates).map(([locale, path]) => (
+				<link rel="alternate" hreflang={locale} href={new URL(path, Astro.site)} />
+			))}
+		{alternates?.en && <link rel="alternate" hreflang="x-default" href={new URL(alternates.en, Astro.site)} />}
+
+		<meta name="theme-color" media="(prefers-color-scheme: light)" content="#f4f3f6" />
+		<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#131117" />
+
+		<meta property="og:title" content={title ?? siteName} />
+		<meta property="og:description" content={pageDescription} />
+		<meta property="og:url" content={canonical} />
+		<meta property="og:type" content={type} />
+		<meta property="og:site_name" content={siteName} />
+		<meta property="og:locale" content={lang === "id" ? "id_ID" : "en_US"} />
+		{image && <meta property="og:image" content={image} />}
+		<meta name="twitter:card" content={image ? "summary_large_image" : "summary"} />
+
+		<slot name="head" />
 		<ClientRouter />
 	</head>
-	<body
-		class="flex min-h-dvh flex-col items-center justify-between bg-purple-50 antialiased duration-150 ease-out dark:bg-neutral-950"
-	>
-		<div class="xs:px-6 w-full px-4 sm:px-8 md:px-[5%]">
-			<Header />
-			<main>
-				<slot />
-			</main>
-		</div>
-		<Footer />
+	<body class="flex min-h-dvh flex-col">
+		<Header lang={lang} alternates={alternates} />
+		<main class="flex-1">
+			<slot />
+		</main>
+		<Footer lang={lang} />
 	</body>
 </html>
-
-<script is:inline>
-	window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", (e) => {
-		if (e.matches && !localStorage.theme) {
-			if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
-				document.documentElement.className = "dark";
-				document.documentElement.style.colorScheme = "dark";
-			} else {
-				document.documentElement.classList.remove("dark");
-				document.documentElement.style.colorScheme = "light";
-			}
-		}
-	});
-
-	window.matchMedia("(prefers-color-scheme: light)").addEventListener("change", (e) => {
-		if (e.matches && !localStorage.theme) {
-			if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
-				document.documentElement.className = "dark";
-				document.documentElement.style.colorScheme = "dark";
-			} else {
-				document.documentElement.classList.remove("dark");
-				document.documentElement.style.colorScheme = "light";
-			}
-		}
-	});
-</script>
