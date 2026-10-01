@@ -1,72 +1,61 @@
-# A minimal Astro site with Sanity Studio
+# Rafli Malik — blog
 
-This starter uses [Astro](https://astro.build/) for the front end and [Sanity](https://sanity.io/) to handle its content.
+Photos and notes from places I've been. Live at [blog.raflimalik.com](https://blog.raflimalik.com).
 
-## Featuring
+Built with [Astro](https://astro.build/) (static output), [Sanity](https://sanity.io/) for content, Tailwind CSS 4 and shadcn/ui (Base UI). The site is published in English (`/`) and Indonesian (`/id/`).
 
-- How to fetch content as data from [the Sanity Content Lake](https://www.sanity.io/docs/datastore)
-- How to render block content with [Portable Text](https://www.sanity.io/docs/presenting-block-text)
-- A [Sanity Studio](https://www.sanity.io/docs/sanity-studio) to create and edit content
-- How to crop and render images with [Sanity Image URLs](https://www.sanity.io/docs/presenting-images)
+## Requirements
 
-## Prerequisites
-
-- [Node.js](https://nodejs.org/en/) (v16.12 or later)
+- Node.js 22.12 or later
+- pnpm (version pinned in `package.json`)
 
 ## Getting started
 
-Run the following commands
+1. `pnpm install`
+2. Copy `.env.example` to `.env` and set `PUBLIC_SANITY_STUDIO_PROJECT_ID` and `PUBLIC_SANITY_STUDIO_DATASET`.
+3. `pnpm dev`
 
-1. `npm install` to install dependencies
-2. `npx sanity@latest init --env`, this will:
-   - ask you to select or create a Sanity project and dataset
-   - output a `.env` file with appropriate variables
-   - _(or use `sanity init --env` if you have the CLI installed)_
+The site runs at [http://localhost:4321](http://localhost:4321) and the embedded Sanity Studio at [http://localhost:4321/admin](http://localhost:4321/admin).
 
-3. `npm run dev` to start the development server
+## Scripts
 
-Your Astro app should now be running on [http://localhost:4321/](http://localhost:4321/) and Studio on [http://localhost:4321/admin](http://localhost:4321/admin).
+| Command        | What it does                                                                     |
+| -------------- | -------------------------------------------------------------------------------- |
+| `pnpm dev`     | Start the dev server                                                             |
+| `pnpm build`   | Type-check (`astro check`, `tsc`) and build the static site to `dist/`           |
+| `pnpm preview` | Serve the production build locally                                               |
+| `pnpm typegen` | Extract the Sanity schema and regenerate `sanity.types.ts` from the GROQ queries |
+| `pnpm lint`    | Check formatting (Prettier) and lint (ESLint)                                    |
+| `pnpm format`  | Format all files                                                                 |
 
-### Add content
+Run `pnpm typegen` after you change anything in `schema/` or the queries in `src/lib/sanity.ts`, and commit the updated `schema.json` and `sanity.types.ts`.
 
-1. Visit the Studio and create and publish a new `Post` document
-2. Visit the homepage and refresh the page to see your content rendered on the page
+## Project structure
 
-The schema for the `Post` document is defined in the `/schema` folder. You can [add more document types](https://www.sanity.io/docs/schema-types) to the Studio to suit your needs.
+- `schema/`: Sanity content model (`post`, `blockContent`)
+- `sanity.config.ts`: Studio configuration, including document-level translations (EN and ID)
+- `src/lib/sanity.ts`: GROQ queries (typed with `defineQuery`) and fetch helpers
+- `src/lib/image.ts`: Sanity image URL and `srcset` helpers
+- `src/components/`: page views and UI components; `ui/` holds shadcn components
+- `src/i18n/ui.ts`: interface strings for each language
+- `src/pages/`: routes. English routes are at the root, Indonesian routes are under `id/`.
+- `migrations/`: Sanity content migrations
 
-## Removing TypeScript
+## Content
 
-If you do not wish to use TypeScript, we've included a `remove-typescript.mjs` file in the root of this repository. You can run this file with `node remove-typescript.mjs` to strip all types from this project. Please run this before tampering with any code to ensure that all types are properly removed.
+Posts are translated per document with `@sanity/document-internationalization`. A post shows on the site after it is published, and a link to its translation shows when both language versions are published.
 
-If you intend to use TypeScript, you can safely remove the `remove-typescript.mjs` file.
+Upgrading to `@sanity/document-internationalization` v6 required a one-time data migration (`migrations/migrateToLanguageField`). The migration was run against `production` on 2026-09-30. You don't need to run it again.
 
-## Removing the embedded Studio
+## Deployment
 
-If you wish to manage and host the Studio separately, you remove the `studioBasePath` property for the `sanity` configuration in `astro.config.mjs`. You can also remove the following dependencies:
+The build output in `dist/` is fully static, so no server adapter is needed. Deploy it to any static host, for example Cloudflare Workers static assets or Cloudflare Pages. Use Node.js 22.12 or later in the build environment. Build command: `pnpm build`. Output directory: `dist`.
 
-- `output` in `astro.config.mjs`…
-  - …and `adapter` in `astro.config.mjs`
-- `react()` in `astro.config.mjs`
-- `@sanity/vision` `react` `react-dom` `@types/react` `@types/react-dom` from `package.json`
-- `schema` folder (you might want to copy this to the new Studio location)
-- `sanity.config.ts` (you might want to copy this to the new Studio location)
+## Notes
 
-## Deployments
+- TypeScript is pinned to 6.0 because `typescript-eslint` and `@astrojs/check` don't support TypeScript 7 yet.
+- `astro.config.ts` disables `@sanity/astro`'s dev-only module dedupe on Windows to work around a path bug in `@sanity/astro` 3.5.1.
 
-Feel free to deploy the App to whichever hosting provider you prefer ([Vercel](https://vercel.com/), [Netlify](https://netlify.com), [Cloudflare](https://pages.cloudflare.com/), etc). Remember [to change the adapter](https://docs.astro.build/en/guides/server-side-rendering/#adding-an-adapter) in the `astro.config.mjs` file to match your hosting provider.
+## License
 
-### Deploying the Studio on \*\.sanity.studio
-
-You can also deploy the Sanity Studio on its own URL by running `npx sanity deploy`, provided you have added a [`sanity.cli.ts` configuration file](https://www.sanity.io/docs/cli):
-
-```ts
-// sanity.cli.ts
-import { defineCliConfig } from "sanity/cli";
-
-export default defineCliConfig({
-	api: {
-		projectId: "<your-project-id>",
-		dataset: "<your-dataset-name>",
-	},
-});
-```
+Content (words and photos) is licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). The source code is licensed under the [MIT license](LICENSE-CODE).
