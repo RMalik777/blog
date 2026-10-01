@@ -17,11 +17,11 @@ import { defineConfig } from "sanity";
 import { structureTool } from "sanity/structure";
 import { visionTool } from "@sanity/vision";
 import { documentInternationalization } from "@sanity/document-internationalization";
-import { schemaTypes } from "./schema";
+import { schemaTypes } from "./schema/index";
 
 export default defineConfig({
-	name: "project-name",
-	title: "Project Name",
+	name: "blog",
+	title: "Rafli Malik",
 	projectId,
 	dataset,
 	plugins: [
@@ -33,7 +33,7 @@ export default defineConfig({
 				{ id: "id", title: "Indonesian" },
 			],
 			schemaTypes: ["post"],
-			apiVersion: "2024-08-16",
+			apiVersion: "2026-09-30",
 		}),
 	],
 	schema: {

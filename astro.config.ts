@@ -1,71 +1,78 @@
 // Loading environment variables from .env files
 // https://docs.astro.build/en/guides/configuring-astro/#environment-variables
 import { loadEnv } from "vite";
+import { defineConfig, fontProviders } from "astro/config";
+import sanity from "@sanity/astro";
+import react from "@astrojs/react";
+import sitemap from "@astrojs/sitemap";
+import tailwindcss from "@tailwindcss/vite";
+
 const {
 	PUBLIC_SANITY_STUDIO_PROJECT_ID,
 	PUBLIC_SANITY_STUDIO_DATASET,
 	PUBLIC_SANITY_PROJECT_ID,
 	PUBLIC_SANITY_DATASET,
-} = loadEnv(import.meta.env.MODE, process.cwd(), "");
-import { defineConfig } from "astro/config";
+} = loadEnv(process.env.NODE_ENV ?? "development", process.cwd(), "");
 
 // Different environments use different variables
 const projectId = PUBLIC_SANITY_STUDIO_PROJECT_ID || PUBLIC_SANITY_PROJECT_ID;
 const dataset = PUBLIC_SANITY_STUDIO_DATASET || PUBLIC_SANITY_DATASET;
-import sanity from "@sanity/astro";
-import react from "@astrojs/react";
 
-// Change this depending on your hosting provider (Vercel, Netlify etc)
-// https://docs.astro.build/en/guides/server-side-rendering/#adding-an-adapter
-import cloudflare from "@astrojs/cloudflare";
+// @sanity/astro 3.5.1's dev-only module dedupe strips "/package.json" with a forward-slash regex,
+// so on Windows it aliases `sanity` to its package.json and the Studio fails to load in `astro dev`.
+// pnpm installs a single copy of `sanity`, so dedupe isn't needed here.
+if (process.platform === "win32") process.env.SANITY_ASTRO_DISABLE_MODULE_DEDUPE ??= "1";
 
-import sitemap, { ChangeFreqEnum } from "@astrojs/sitemap";
-
-import tailwindcss from "@tailwindcss/vite";
+const site = "https://blog.raflimalik.com";
 
 // https://astro.build/config
 export default defineConfig({
+	site,
+	output: "static",
 	vite: {
-		// @ts-expect-error - vite version mismatch between Astro and Tailwind CSS. Waiting for Astro to use Vite 7
 		plugins: [tailwindcss()],
-		resolve: {
-			// Use react-dom/server.edge instead of react-dom/server.browser for React 19.
-			// Without this, MessageChannel from node:worker_threads needs to be polyfilled.
-			// @ts-expect-error - temporary fix https://github.com/withastro/adapters/pull/436
-			alias: import.meta.env.PROD && {
-				"react-dom/server": "react-dom/server.edge",
-			},
+	},
+	i18n: {
+		locales: ["en", "id"],
+		defaultLocale: "en",
+		routing: {
+			prefixDefaultLocale: false,
 		},
 	},
-	site: "https://blog.raflimalik.com",
-	output: "static",
-	adapter: cloudflare({
-		imageService: "compile",
-	}),
+	fonts: [
+		{
+			provider: fontProviders.fontsource(),
+			name: "Newsreader",
+			cssVariable: "--font-newsreader",
+			weights: ["200 800"],
+			styles: ["normal", "italic"],
+			fallbacks: ["Georgia", "serif"],
+		},
+		{
+			provider: fontProviders.fontsource(),
+			name: "Geist",
+			cssVariable: "--font-geist",
+			weights: ["100 900"],
+			styles: ["normal"],
+			fallbacks: ["system-ui", "sans-serif"],
+		},
+	],
 	integrations: [
 		sanity({
 			projectId,
 			dataset,
 			studioBasePath: "/admin",
+			// Static build: always fetch fresh content at build time
 			useCdn: false,
-			// `false` if you want to ensure fresh data
-			apiVersion: "2025-12-09", // Set to date of setup to use the latest API version
+			apiVersion: "2026-09-30",
 		}),
-		react(),
 		// Required for Sanity Studio
+		react(),
 		sitemap({
-			filter: (page) => page !== "https://blog.raflimalik.com/admin",
-			serialize: (page) => {
-				if (page.url == "https://blog.raflimalik.com/") {
-					page.changefreq = ChangeFreqEnum.MONTHLY;
-					page.priority = 1;
-					page.lastmod = new Date().toString();
-				} else {
-					page.changefreq = ChangeFreqEnum.YEARLY;
-					page.priority = 0.8;
-					page.lastmod = new Date().toString();
-				}
-				return page;
+			filter: (page) => !page.startsWith(`${site}/admin`),
+			i18n: {
+				defaultLocale: "en",
+				locales: { en: "en", id: "id" },
 			},
 		}),
 	],

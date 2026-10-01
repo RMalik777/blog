@@ -5,3 +5,9 @@ yarn.lock
 .vscode
 .claude
 .agents
+.playwright-mcp
+schema.json
+sanity.types.ts
+backups
+dist
+.astro

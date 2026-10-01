@@ -26,3 +26,9 @@ pnpm-debug.log*
 
 #local development files
 .wrangler/
+
+# sanity
+backups/
+
+# playwright screenshots
+.playwright-mcp/
