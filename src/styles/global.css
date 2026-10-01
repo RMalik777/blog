@@ -1,3 +1,9 @@
+/*
+ * Sanity Studio's CSS (with a global `* { margin: 0; padding: 0 }` reset in `@layer sui.global`)
+ * leaks into every page's production bundle. Declare its layer first so Tailwind's layers win.
+ */
+@layer sui;
+
 @import "tailwindcss";
 @import "tw-animate-css";
 @import "shadcn/tailwind.css";
