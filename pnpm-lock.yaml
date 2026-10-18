@@ -234,8 +234,8 @@ importers:
         specifier: ^2.1.1
         version: 2.1.1
       groq:
-        specifier: ^6.17.0
-        version: 6.17.0
+        specifier: ^6.19.0
+        version: 6.19.0
       lucide-react:
         specifier: ^1.49.0
         version: 1.49.0(@types/react@19.3.0)(react@19.3.0)
@@ -5022,8 +5022,8 @@ packages:
     resolution: {integrity: sha512-kj56ZjnOFbgDt91zYwQ10jsVUtVGJqAKfRbAir0EvTK84O5ZsSyc0rDEm2P3jmAJkxs4X1DOG8vtaYJQIA/XCA==}
     engines: {node: '>=22.12'}
 
-  groq@6.17.0:
-    resolution: {integrity: sha512-5t2XuEuV8ngevJlAAOSfwAgjggzTs8XXizk1BrUFFEWinqp5CjKYUoo/s6cqL3YeafN0/w7EfvOSg7V87wjxTA==}
+  groq@6.19.0:
+    resolution: {integrity: sha512-lI4IYuH0S2BD9X+TNn+QLMcOueqAJr/O/gmn1CbtmWZ8WjBIbTflXudOsMb1Dh/AaPBYTxcGWjQosEHqfTeSkA==}
     engines: {node: '>=22.12'}
 
   gunzip-maybe@1.4.2:
@@ -10671,7 +10671,7 @@ snapshots:
       '@sanity/worker-channels': 2.0.0
       chokidar: 3.6.0
       globby: 11.1.0
-      groq: 6.17.0
+      groq: 6.19.0
       groq-js: 2.0.0
       json5: 2.2.3
       lodash-es: 4.18.1
@@ -11026,7 +11026,7 @@ snapshots:
       '@sanity/mutate': 0.18.2(xstate@5.33.2)
       '@sanity/telemetry': 1.1.0(react@19.3.0)
       '@sanity/types': 6.17.0(@types/react@19.3.0)
-      groq: 6.17.0
+      groq: 6.19.0
       groq-js: 2.0.0
       reselect: 5.3.0
       rxjs: 7.8.2
@@ -13323,7 +13323,7 @@ snapshots:
     dependencies:
       obug: 2.2.1
 
-  groq@6.17.0: {}
+  groq@6.19.0: {}
 
   gunzip-maybe@1.4.2:
     dependencies:
