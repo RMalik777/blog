@@ -34,7 +34,7 @@
 		"react": "^19.3.1",
 		"react-dom": "^19.3.1",
 		"sanity": "^6.20.0",
-		"sanity-plugin-internationalized-array": "^5.3.6",
+		"sanity-plugin-internationalized-array": "^5.3.9",
 		"shadcn": "^4.22.1",
 		"tailwind-merge": "^3.7.0"
 	},
