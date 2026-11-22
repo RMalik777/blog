@@ -18,7 +18,7 @@
 		"@astrojs/react": "^7.1.9",
 		"@astrojs/sitemap": "^3.7.6",
 		"@base-ui/react": "^1.9.0",
-		"@sanity/astro": "^3.6.2",
+		"@sanity/astro": "^4.1.0",
 		"@sanity/client": "^8.17.0",
 		"@sanity/document-internationalization": "^6.3.0",
 		"@sanity/image-url": "^2.2.0",
